@@ -52,4 +52,10 @@ class PostsControllerTest < ActionController::TestCase
 
 		assert_select 'article', Post.count
 	end
+
+	test "should show date created for posts" do
+		get :show, :id => @post.to_param
+
+		assert_select 'time'
+	end
 end
