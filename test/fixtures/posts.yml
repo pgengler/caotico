@@ -1,9 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  title: MyString
-  content: MyText
+  title: First post
+  content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum faucibus pellentesque velit, vel porttitor nunc sollicitudin et. Proin ac enim leo, venenatis molestie mi. Praesent at purus a nisi vulputate egestas. Cras egestas, enim et auctor porta, lacus quam tincidunt urna, id bibendum lacus diam nec mi. Nulla facilisi. In hac habitasse platea dictumst. Nam et eros a nunc pulvinar convallis. Sed egestas vehicula diam, feugiat volutpat risus molestie a. Duis auctor consectetur rutrum. Morbi vitae arcu ut diam tempus fermentum. Etiam et neque nisi. Nullam ac elit nec ante pulvinar viverra in in libero. Donec interdum rhoncus viverra. Vivamus in nunc felis. Phasellus malesuada ultrices sapien, non rhoncus arcu dignissim non. Nam euismod posuere nulla vel auctor.
 
 two:
-  title: MyString
-  content: MyText
+  title: Another post
+  content: Mauris egestas mattis risus non dapibus. Cras sit amet elit vitae urna gravida pellentesque quis nec libero. Donec ante leo, mollis iaculis laoreet egestas, viverra a dui. Fusce sodales lectus eu est aliquam sagittis. Nunc eget est quis tortor tincidunt ornare ac eu magna. Sed est quam, placerat sed hendrerit ac, congue ut tellus. Sed tortor lectus, mattis vitae fermentum nec, faucibus non metus. Ut at tortor orci. Duis odio dolor, tempor sit amet faucibus non, cursus a mi. Fusce ultrices, ante in venenatis posuere, leo arcu molestie nisi, in tristique sem urna sit amet elit. Vivamus sapien enim, imperdiet vel ultrices ut, fermentum in risus. Pellentesque ac nulla a libero eleifend tincidunt. Nunc lacinia nibh vitae est interdum euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut metus massa, rutrum ac pulvinar non, imperdiet eu velit. Nunc nisi lectus, imperdiet vel euismod nec, vulputate eu lectus. Ut pharetra felis sit amet quam faucibus malesuada. Vestibulum adipiscing neque non ligula condimentum at sagittis lacus consequat. Aliquam magna sem, vestibulum vel commodo eget, commodo at lorem. 
