@@ -46,4 +46,10 @@ class PostsControllerTest < ActionController::TestCase
 
     assert_redirected_to posts_path
   end
+
+	test "index shows all posts" do
+		get :index
+
+		assert_select 'article', Post.count
+	end
 end
