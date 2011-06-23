@@ -58,4 +58,10 @@ class PostsControllerTest < ActionController::TestCase
 
 		assert_select 'time'
 	end
+
+	test "post titles should link to post page" do
+		get :index
+
+		assert_select "a[href=#{post_path(@post)}]"
+	end
 end
