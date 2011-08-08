@@ -3,6 +3,7 @@ require 'test_helper'
 class PostsControllerTest < ActionController::TestCase
   setup do
     @post = posts(:one)
+		@post_with_pullquote = posts(:pullquote)
   end
 
   test "should get index" do
@@ -63,5 +64,17 @@ class PostsControllerTest < ActionController::TestCase
 		get :index
 
 		assert_select "a[href=#{post_path(@post)}]"
+	end
+
+	test "should include pullquotes for posts with them" do
+		get :show, :id => @post_with_pullquote.to_param
+
+		assert_select 'aside', 1
+	end
+
+	test "should not include pullquotes for posts without them" do
+		get :show, :id => @post.to_param
+
+		assert_select 'aside', 0
 	end
 end

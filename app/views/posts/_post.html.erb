@@ -5,5 +5,8 @@
 	</header>
 	<section>
 		<p><%= post.content %></p>
+		<% if post.pullquote %>
+		<aside><%= post.pullquote %></aside>
+		<% end %>
 	</section>
 </article>
