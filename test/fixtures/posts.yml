@@ -1,14 +1,77 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  title: First post
+sample:
+  title: Sample post
   content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum faucibus pellentesque velit, vel porttitor nunc sollicitudin et. Proin ac enim leo, venenatis molestie mi. Praesent at purus a nisi vulputate egestas. Cras egestas, enim et auctor porta, lacus quam tincidunt urna, id bibendum lacus diam nec mi. Nulla facilisi. In hac habitasse platea dictumst. Nam et eros a nunc pulvinar convallis. Sed egestas vehicula diam, feugiat volutpat risus molestie a. Duis auctor consectetur rutrum. Morbi vitae arcu ut diam tempus fermentum. Etiam et neque nisi. Nullam ac elit nec ante pulvinar viverra in in libero. Donec interdum rhoncus viverra. Vivamus in nunc felis. Phasellus malesuada ultrices sapien, non rhoncus arcu dignissim non. Nam euismod posuere nulla vel auctor.
+  created_at: <%= 1.week.ago %>
+
+newest:
+  title: Most recent post
+  content: Praesent sodales ultrices odio nec malesuada. Ut ut fermentum eros. Morbi mattis ultricies purus, nec consequat ligula blandit ac. Nam sed velit ligula, pulvinar varius lacus. Sed a urna porttitor metus faucibus egestas. Vivamus ac ante ut sem placerat pharetra. Fusce dictum feugiat dui, vel euismod lacus consequat sed. Aliquam at nulla purus, in fringilla dolor. Curabitur ac neque gravida nunc condimentum gravida. Vivamus eget urna ipsum. Curabitur vitae elit non eros commodo sagittis in a mauris. Sed sed augue sem, et porttitor tortor. Sed urna magna, facilisis sed egestas sit amet, posuere sed mi. Nullam orci libero, porttitor nec ultrices at, scelerisque ut felis. Morbi sagittis ultricies erat, ut pretium nunc mollis vel. Pellentesque luctus tristique commodo. Etiam vulputate aliquam magna, ac suscipit eros porttitor at. Nullam tincidunt felis vitae metus placerat sed mollis tortor molestie.
+# created_at defaults to 'now'
 
 two:
   title: Another post
   content: Mauris egestas mattis risus non dapibus. Cras sit amet elit vitae urna gravida pellentesque quis nec libero. Donec ante leo, mollis iaculis laoreet egestas, viverra a dui. Fusce sodales lectus eu est aliquam sagittis. Nunc eget est quis tortor tincidunt ornare ac eu magna. Sed est quam, placerat sed hendrerit ac, congue ut tellus. Sed tortor lectus, mattis vitae fermentum nec, faucibus non metus. Ut at tortor orci. Duis odio dolor, tempor sit amet faucibus non, cursus a mi. Fusce ultrices, ante in venenatis posuere, leo arcu molestie nisi, in tristique sem urna sit amet elit. Vivamus sapien enim, imperdiet vel ultrices ut, fermentum in risus. Pellentesque ac nulla a libero eleifend tincidunt. Nunc lacinia nibh vitae est interdum euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut metus massa, rutrum ac pulvinar non, imperdiet eu velit. Nunc nisi lectus, imperdiet vel euismod nec, vulputate eu lectus. Ut pharetra felis sit amet quam faucibus malesuada. Vestibulum adipiscing neque non ligula condimentum at sagittis lacus consequat. Aliquam magna sem, vestibulum vel commodo eget, commodo at lorem. 
+  created_at: <%= 1.day.ago %>
+
+oldest:
+  title: The oldest post
+  content: Nulla eleifend, erat id tristique blandit, nisl dolor mollis eros, sed porta lectus purus ac odio. Cras molestie neque a felis tristique volutpat. Aliquam sed nisi vel justo fringilla viverra. Cras consectetur sapien vitae tortor mollis egestas at id leo. Donec et purus id ligula ornare pretium. Phasellus purus turpis, tristique sed viverra sed, scelerisque vitae dui. Aliquam molestie, neque et luctus mollis, libero ante mollis nulla, ut vestibulum nisi ipsum ut est. Proin varius, tellus in adipiscing tristique, mauris ante fermentum lorem, vel pharetra lacus enim vitae nunc. Nam scelerisque tortor non mi bibendum vel dignissim urna aliquet. Praesent in risus velit. Pellentesque purus odio, molestie vitae pulvinar nec, suscipit sed metus. Donec enim justo, vehicula sit amet fermentum non, luctus ut mi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam dictum faucibus sagittis. Nulla sed iaculis nisl. Morbi et tellus ut urna congue consequat at quis felis. Proin tincidunt sodales nisl, a convallis lectus commodo sit amet. Nam magna nibh, luctus vel eleifend ac, faucibus et lectus. Nulla non porta diam. In eros arcu, commodo vitae sodales a, convallis sed velit.
+  created_at: <%= 3.years.ago %>
 
 pullquote:
   title: Post with pullquote
   content: Bacon ipsum dolor sit amet jowl non deserunt, turkey culpa headcheese shankle ball tip ullamco hamburger in tempor andouille. Headcheese chuck ad, reprehenderit swine incididunt adipisicing tenderloin exercitation et. Eu incididunt meatloaf, pork id chuck ad dolor pancetta. Mollit eiusmod cillum est, sed cow pork belly boudin quis rump bresaola beef veniam. Sed venison aliquip, ball tip swine dolore fugiat laboris sausage esse pancetta. Short loin jerky shank aute, commodo aliquip laborum ea duis sirloin meatball brisket labore eu pork chop. Brisket eu nulla elit, pastrami proident adipisicing exercitation ball tip pork belly ham.
   pullquote: Eu incididunt meatloaf, pork id chuck ad dolor pancetta.
+  created_at: <%= 2.days.ago %>
+
+four:
+  title: Fourth post
+  content: Vivamus augue purus, consectetur sed rhoncus id, sodales et leo. Suspendisse ac metus enim, a ultricies massa. Integer quis risus nec orci euismod pulvinar a vitae neque. Morbi at urna tempor massa gravida molestie et eu libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper feugiat dui, non dapibus magna volutpat ut. Aliquam imperdiet cursus fermentum. Nulla facilisi. Quisque quis leo in diam convallis dapibus. Aenean eros diam, tincidunt a rhoncus eget, gravida vel libero. Sed lorem arcu, posuere quis mattis vel, ornare in libero. Integer dictum justo viverra lorem pharetra vitae molestie metus dapibus. Praesent ante magna, ultrices ac mollis at, malesuada id arcu. Sed dignissim rutrum pretium. Aliquam ac sodales libero. In non magna purus, id congue est. Sed gravida odio quis purus ultricies volutpat in id purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus sem sem, pharetra ut sodales eu, feugiat vitae enim.
+  created_at: <%= 3.days.ago %>
+
+five:
+  title: Fifth post
+  content: Ut dignissim, lacus eget eleifend blandit, arcu dui lobortis est, vel egestas nunc sapien in lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent est nibh, interdum sit amet sodales quis, aliquet sit amet arcu. Donec ornare feugiat urna nec convallis. Morbi nisl velit, fringilla non ultricies id, bibendum et velit. Nam non condimentum nisi. Nam id dolor eu dolor tempus vestibulum. Fusce sodales porta ligula in pellentesque. Suspendisse lobortis fringilla justo, non tempus velit lobortis non. Suspendisse congue lacinia tempor. Maecenas eget dui neque. Integer ullamcorper, lacus at suscipit rutrum, mauris elit semper risus, vitae ultricies est lectus et erat. Aenean mattis sem sed libero elementum sed rhoncus leo pretium. Vestibulum dolor metus, accumsan bibendum molestie nec, pulvinar a diam. Integer dignissim rutrum tellus vehicula dignissim. Nulla pharetra augue ut leo ullamcorper vel semper est malesuada. Duis mi leo, eleifend sit amet varius suscipit, consequat et purus. Nullam nunc eros, tincidunt auctor ultrices sit amet, tincidunt ut libero. Integer lobortis mollis hendrerit.
+  created_at: <%= 4.days.ago %>
+
+six:
+  title: Yes, Virginia, There is a Sixth Post
+  content: Integer aliquam felis et ipsum feugiat venenatis varius metus aliquet. Suspendisse lobortis nisl leo. Sed tincidunt, felis vel eleifend egestas, elit justo semper felis, a cursus justo lectus vel risus. Etiam id nisl quis velit semper faucibus vitae nec sem. Integer cursus lobortis auctor. Aliquam molestie commodo arcu, ac imperdiet tortor tincidunt non. Suspendisse facilisis quam et tellus varius nec semper tellus lacinia. Proin fringilla dolor in velit tincidunt feugiat. Curabitur erat mauris, tincidunt a vulputate a, adipiscing nec dolor. Duis sed urna a nunc ultricies sagittis. Quisque purus leo, pharetra sed porttitor eu, lacinia id felis. Mauris ut nibh elit, et dictum lectus. Suspendisse nunc nulla, suscipit convallis pulvinar in, mattis consequat turpis. Integer quis enim quis erat sagittis sodales. Suspendisse non ante non massa sollicitudin blandit. Morbi ac tempus quam. Maecenas ultrices lacinia nisi sollicitudin consequat. Etiam convallis quam nec massa malesuada quis egestas lacus rhoncus.
+  created_at: <%= 5.days.ago %>
+
+seven:
+  title: Snow White and the Seven Posts
+  content: In hac habitasse platea dictumst. Integer volutpat justo scelerisque libero cursus at semper metus feugiat. Quisque cursus euismod nulla sit amet consequat. Vestibulum sed massa turpis. Quisque porta libero in sem luctus vestibulum. Sed posuere erat ornare purus vulputate tincidunt. Donec leo justo, facilisis eget malesuada nec, ornare ut quam. Donec quis metus quam, eget tempor purus. Mauris facilisis porttitor enim, vel luctus purus pretium eu. Nullam vulputate suscipit eros eu vehicula. Ut consequat consectetur viverra.
+  created_at: <%= 6.days.ago %>
+
+eight:
+  title: Eight legs
+  content: Mauris blandit, magna eget faucibus pharetra, nibh sem mollis urna, vel porta lacus elit ac turpis. Donec cursus lorem eu erat molestie dapibus. Aliquam non nunc ac purus elementum varius condimentum nec orci. Nunc facilisis, enim non pellentesque faucibus, diam magna facilisis purus, eget molestie eros metus in ligula. Nullam hendrerit enim sit amet erat tristique vitae feugiat augue sodales. Etiam vitae gravida purus. Proin auctor tellus purus, quis tempor dui. Quisque condimentum nunc at dui posuere gravida. Vestibulum tempus auctor nisi ac tincidunt. Vivamus venenatis diam non diam fermentum dictum. Donec molestie viverra dignissim. Phasellus hendrerit libero id urna interdum a aliquet lorem feugiat. Ut id arcu a neque suscipit venenatis sed id enim. Maecenas dignissim interdum lacus in iaculis. 
+  created_at: <%= 7.days.ago %>
+
+nine:
+  title: Three times three
+  content: Quisque vel nisi vel erat congue porta ut ut massa. Suspendisse a mi suscipit arcu viverra ultricies id non libero. Maecenas tincidunt, nulla in suscipit vehicula, ante dui euismod diam, in eleifend dui diam vitae mauris. Duis scelerisque fermentum sodales. Etiam fermentum tempor nisl, et tincidunt mi porttitor nec. Donec aliquet, arcu in tempus malesuada, magna nisl pellentesque velit, et fringilla dolor lacus laoreet mauris. Nunc sit amet dui sed orci tempus dictum eu molestie sem. Cras sollicitudin, dui quis placerat accumsan, libero neque ornare mauris, ut tincidunt urna ante at libero. Fusce non nisi justo, a cursus turpis. Morbi porta suscipit mauris non faucibus.
+  created_at: <%= 8.days.ago %>
+
+ten:
+  title: Round number
+  content: Nulla sed arcu sodales est elementum convallis. Donec nec tortor nunc. Praesent ac nunc est. Morbi tristique pulvinar augue vel blandit. Duis risus lectus, fermentum non adipiscing non, lobortis vitae metus. Aliquam interdum varius felis, eget euismod tortor fermentum at. Phasellus viverra massa quis diam lobortis ac suscipit mauris semper. Quisque sit amet enim risus, a consectetur nisl. Nullam laoreet porta lorem quis tristique. Donec in leo lectus, sed condimentum dolor. Aenean vitae erat enim. Praesent elementum augue vitae est mollis vitae porttitor urna vehicula. Ut accumsan faucibus facilisis.
+  created_at: <%= 9.days.ago %>
+
+eleven:
+  title: Post's Eleven
+  content: Vestibulum vitae lacus id lacus consectetur porta. Suspendisse tincidunt, lorem vitae dignissim porta, ipsum mauris faucibus lacus, ac vestibulum lectus dolor a erat. Sed iaculis ipsum rhoncus risus lacinia dignissim. Nam semper, est bibendum aliquam lacinia, enim quam ullamcorper elit, et elementum nibh velit tincidunt metus. Cras mi turpis, sagittis eu dictum eu, cursus vel velit. Nullam magna nisl, sagittis vitae rutrum quis, tristique a odio. Curabitur enim mauris, cursus vitae viverra id, lacinia vitae erat. Proin tincidunt erat eu odio sollicitudin varius. Mauris nec libero non diam dapibus malesuada. Proin ac neque felis, sed laoreet nisi. Vestibulum erat erat, auctor et fringilla sit amet, hendrerit quis libero. Etiam urna libero, accumsan a hendrerit eget, vestibulum vitae tellus. Quisque nisi diam, molestie sed imperdiet a, congue non enim. Aenean eu libero lacus. Pellentesque rhoncus suscipit quam quis egestas. Proin et tortor quis turpis consequat euismod et eu nisi. Curabitur eget augue nec felis euismod ornare eget in neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mattis sem id orci convallis vulputate vulputate tortor ornare. Duis vitae justo eget magna placerat tincidunt.
+  created_at: <%= 10.days.ago %>
+
+twelve:
+  title: Six of one plus half a dozen of another
+  created_at: <%= 11.days.ago %>
+  content: Quisque convallis lorem ut enim ullamcorper ut tincidunt ligula sagittis. Fusce fermentum pretium nibh vel consectetur. Phasellus vitae nisi a dolor hendrerit elementum. Morbi convallis tincidunt nulla, at fermentum leo posuere luctus. Vestibulum pretium, nisi et vehicula consequat, enim turpis dignissim magna, id gravida felis arcu ac metus. Integer luctus erat nec metus aliquam id scelerisque orci ornare. Aliquam porta felis vel nisi euismod mattis. Duis quis mi mauris, in sodales nunc. Sed euismod commodo pretium. Integer a est et ipsum ullamcorper porta.
+
+thirteen:
+  title: Lucky post 13 passed me by
+  content: Donec ultrices justo quis velit ultrices nec mollis augue ultrices. Praesent suscipit velit mollis tellus varius commodo. Aenean cursus lobortis tortor vitae ornare. Morbi varius pharetra risus ornare sollicitudin. Donec auctor volutpat eros, cursus tincidunt orci varius ac. In aliquet ultricies est, nec auctor augue commodo nec. Nam lacinia urna a neque volutpat ut porta nibh interdum. Mauris lacinia rutrum turpis, ac viverra lacus molestie sed. Integer at magna vitae tellus eleifend ullamcorper sit amet sed nibh. Nunc feugiat lobortis congue. In sodales, ligula luctus dignissim vehicula, nisi odio commodo risus, ac auctor metus lectus sit amet velit. Donec sed sapien quis nibh convallis cursus. Vivamus accumsan rutrum mi non rutrum. Integer sed purus hendrerit odio dignissim porta. Fusce scelerisque erat eu ipsum fringilla vel ultricies augue mollis. Donec non augue vitae risus luctus facilisis. Aenean volutpat gravida ultricies. Aenean at lorem odio. 
+  created_at: <%= 12.days.ago %>

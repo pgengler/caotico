@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
   setup do
-    @post = posts(:one)
+    @post = posts(:sample)
 		@post_with_pullquote = posts(:pullquote)
   end
 
@@ -48,10 +48,15 @@ class PostsControllerTest < ActionController::TestCase
     assert_redirected_to posts_path
   end
 
-	test "index shows all posts" do
+	test "index shows no more than 10 posts" do
 		get :index
 
-		assert_select 'article', Post.count
+		num_posts = 10
+		if Post.count < 10
+			num_posts = Post.count
+		end
+
+		assert_select 'article', num_posts
 	end
 
 	test "should show date created for posts" do

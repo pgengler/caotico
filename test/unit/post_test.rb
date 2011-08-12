@@ -14,4 +14,8 @@ class PostTest < ActiveSupport::TestCase
 		end
 	end
 
+	test "orders posts with newest ones first" do
+		assert_equal posts(:newest), Post.first
+	end
+
 end
