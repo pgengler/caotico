@@ -1,0 +1,25 @@
+aside {
+	margin: 2em !important;
+}
+
+footer {
+	text-align: center;
+}
+
+header.masthead {
+	font-family: Georgia, serif;
+	padding-right: 2em;
+	text-align: right;
+}
+
+	header.masthead h1 {
+		letter-spacing: 0.35em;
+	}
+
+	header.masthead p {
+		font-style: italic;
+	}
+
+article p {
+	text-align: justify;
+}
