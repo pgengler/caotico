@@ -1,4 +1,4 @@
-Chaotic::Application.routes.draw do
+Caotico::Application.routes.draw do
   resources :posts
 
   # The priority is based upon order of creation:
