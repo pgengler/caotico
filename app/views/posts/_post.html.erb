@@ -4,11 +4,6 @@
 		<time><%= post.created_at %></time>
 	</header>
 	<section>
-		<% if post.pullquote %>
-		<aside class='top right'>
-			&#8220; <%= post.pullquote %> &#8221;
-		</aside>
-		<% end %>
-		<p><%= post.content %></p>
+		<%= wrap post.content %>
 	</section>
 </article>

@@ -1,7 +1,3 @@
-aside {
-	margin: 2em !important;
-}
-
 footer {
 	text-align: center;
 }
@@ -33,4 +29,18 @@ article p {
 	-moz-hyphens: auto;
 	hyphens: auto;
 	text-align: justify;
+}
+
+article p + p {
+	margin-top: 1em;
+}
+
+[data-pullquote]:before {
+	content: attr(data-pullquote);
+	float: right;
+	font-size: 120%;
+	line-height: 1.5em;
+	margin: 1em 0 1em 2em;
+	text-indent: 0;
+	width: 20%;
 }
