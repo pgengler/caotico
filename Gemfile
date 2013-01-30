@@ -18,8 +18,8 @@ gem 'jquery-rails'
 
 gem 'kaminari'
 
-# use BlueCloth for Markdown parsing
-gem 'bluecloth', '>= 2.0.0'
+# use HTML::Pipeline for Markdown parsing
+gem 'html-pipeline', '~> 0.0.7'
 
 # Use unicorn as the web server
 # gem 'unicorn'

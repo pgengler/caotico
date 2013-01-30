@@ -7,8 +7,12 @@ module ApplicationHelper
 		].sample
 	end
 
-  def markdown(text)
-    BlueCloth.new(text).to_html.html_safe
-  end
+	def markdown(text)
+		pipeline = HTML::Pipeline.new([
+			HTML::Pipeline::MarkdownFilter,
+			HTML::Pipeline::SanitizationFilter,
+		])
+		pipeline.call(text)[:output].to_s.html_safe
+	end
 
 end
