@@ -1,0 +1,43 @@
+@import url(http://fonts.googleapis.com/css?family=IM+Fell+English+SC);
+
+.masthead {
+	padding-right: 2em;
+	text-align: right;
+
+	h1 {
+		font-family: "IM Fell English SC", Georgia, serif;
+		letter-spacing: 0.35em;
+	}
+}
+
+article {
+	header {
+
+		margin-bottom: 0.75em;
+
+		h2 {
+			margin-bottom: 0
+		}
+	}
+
+	p {
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		hyphens: auto;
+		text-align: justify;
+	}
+
+	p + p {
+		margin-top: 1em;
+	}
+}
+
+[data-pullquote]:before {
+	content: attr(data-pullquote);
+	float: right;
+	font-size: 120%;
+	line-height: 1.5em;
+	margin: 1em 0 1em 2em;
+	text-indent: 0;
+	width: 20%;
+}
