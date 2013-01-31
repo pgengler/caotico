@@ -32,6 +32,10 @@ article {
 	}
 }
 
+footer {
+	text-align: center;
+}
+
 [data-pullquote]:before {
 	content: attr(data-pullquote);
 	float: right;
