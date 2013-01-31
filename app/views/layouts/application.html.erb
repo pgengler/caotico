@@ -2,13 +2,9 @@
 <html>
 <head>
   <title>pgengler.net</title>
-  <%= stylesheet_link_tag 'screen' %>
-	<%= stylesheet_link_tag 'plugins/fancy-type/screen' %>
-	<%= stylesheet_link_tag 'print', :media => 'print' %>
-	<!--[if lt IE 8]><%= stylesheet_link_tag 'ie' %><![endif]-->
-  <%= stylesheet_link_tag 'caotico' %>
+  <%= stylesheet_link_tag    'application', :media => 'all' %>
   <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tag %>
+  <%= csrf_meta_tags %>
 </head>
 <body>
 	<header class='masthead'>
