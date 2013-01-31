@@ -15,3 +15,5 @@ gem 'kaminari'
 
 # use HTML::Pipeline for Markdown parsing
 gem 'html-pipeline', '~> 0.0.7'
+
+gem 'bootstrap-sass', '~> 2.2.2.0'
