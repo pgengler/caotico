@@ -3,3 +3,6 @@
 
 // Loads all Bootstrap javascripts
 //= require bootstrap
+$(function() {
+	$(".alert").alert();
+});
