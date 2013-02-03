@@ -1,7 +1,7 @@
 <article>
 	<header>
 		<h2><%= link_to post.title, post_path(post) %></h2>
-		<time><%= post.created_at %></time>
+		<%= time_tag post.created_at %>
 	</header>
 	<section>
 		<%= markdown post.content %>
