@@ -50,12 +50,7 @@ class PostsControllerTest < ActionController::TestCase
 	test "index shows no more than 10 posts" do
 		get :index
 
-		num_posts = 10
-		if Post.count < 10
-			num_posts = Post.count
-		end
-
-		assert_select 'article', num_posts
+		assert_select 'article', 10
 	end
 
 	test "should show date created for posts" do
