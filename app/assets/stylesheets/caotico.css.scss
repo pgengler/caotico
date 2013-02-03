@@ -10,6 +10,11 @@ body {
 		font-family: Caudex, Georgia, serif;
 		letter-spacing: 0.35em;
 	}
+
+	p {
+		font-style: italic;
+		letter-spacing: 0.25em;
+	}
 }
 
 article {
@@ -51,12 +56,4 @@ footer {
 	text-align: right;
 	text-indent: 0;
 	width: 20%;
-}
-
-nav {
-	ul {
-		li {
-			list-style-type: none;
-		}
-	}
 }
