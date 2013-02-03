@@ -12,15 +12,17 @@
 		<h1>pgengler.net</h1>
 		<p><%= subhead %></p>
 	</header>
-	<div class='navbar'>
-		<nav class='navbar-inner'>
-			<ul class='nav'>
-				<li><%= link_to 'Home', root_url %></li>
-				<li><%= link_to 'Photos', 'http://photos.pgengler.net' %></li>
-			</ul>
-		</nav>
-	</div>
 	<div class='container-fluid'>
+		<div class='row-fluid'>
+			<div class='navbar span10 offset1'>
+				<nav class='navbar-inner'>
+					<ul class='nav'>
+						<li><%= link_to 'Home', root_url %></li>
+						<li><%= link_to 'Photos', 'http://photos.pgengler.net' %></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
 		<div class='row-fluid'>
 			<div class='span8 offset2'>
 				<%= yield %>
