@@ -1,11 +1,13 @@
-@import url(http://fonts.googleapis.com/css?family=IM+Fell+English+SC);
+body {
+	font-weight: 300;
+}
 
 .masthead {
 	padding-right: 2em;
 	text-align: right;
 
 	h1 {
-		font-family: "IM Fell English SC", Georgia, serif;
+		font-family: Caudex, Georgia, serif;
 		letter-spacing: 0.35em;
 	}
 }
@@ -30,6 +32,10 @@ article {
 	p + p {
 		margin-top: 1em;
 	}
+
+	& + article {
+		margin-top: 3em;
+	}
 }
 
 footer {
@@ -40,8 +46,17 @@ footer {
 	content: attr(data-pullquote);
 	float: right;
 	font-size: 110%;
-	line-height: 1.5em;
+	line-height: 1em;
 	margin: 1em 0 1em 2em;
+	text-align: right;
 	text-indent: 0;
 	width: 20%;
+}
+
+nav {
+	ul {
+		li {
+			list-style-type: none;
+		}
+	}
 }
