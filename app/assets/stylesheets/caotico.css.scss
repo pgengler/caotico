@@ -4,7 +4,6 @@ body {
 
 .masthead {
 	padding-right: 2em;
-	text-align: right;
 
 	h1 {
 		font-family: Caudex, Georgia, serif;
@@ -14,6 +13,8 @@ body {
 	p {
 		font-style: italic;
 		letter-spacing: 0.25em;
+		margin-top: -2em;
+		text-align: right;
 	}
 }
 
