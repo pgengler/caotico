@@ -1,3 +1,5 @@
+@import 'bootstrap';
+
 body {
 	font-weight: 300;
 }
@@ -8,6 +10,13 @@ body {
 	h1 {
 		font-family: Caudex, Georgia, serif;
 		letter-spacing: 0.35em;
+
+		a {
+			color: $textColor;
+			&:hover {
+				text-decoration: none;
+			}
+		}
 	}
 
 	p {
