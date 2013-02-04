@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
+<%= link_to 'Delete', post_path(@post), :method => :delete, :confirm => 'Really delete this post?', :class => 'btn btn-danger' %>
+<br>
 <%= link_to 'Show', @post %> |
 <%= link_to 'Back', posts_path %>
