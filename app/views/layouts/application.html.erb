@@ -8,20 +8,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<header class='masthead'>
-		<h1><%= link_to 'pgengler.net', root_url %></h1>
-		<p><%= subhead %></p>
-	</header>
 	<div class='container-fluid'>
+		<header class='masthead'>
+			<h1><%= link_to 'pgengler.net', root_url %></h1>
+			<p><%= subhead %></p>
+		</header>
 		<div class='row-fluid'>
-			<div class='navbar span10 offset1'>
-				<nav class='navbar-inner'>
-					<ul class='nav'>
-						<li><%= link_to 'Home', root_url %></li>
-						<li><%= link_to 'Photos', 'http://photos.pgengler.net' %></li>
-					</ul>
-				</nav>
-			</div>
+			<nav class='span12'>
+				<ul class='nav nav-pills'>
+					<li><%= link_to 'Home', root_url %></li>
+					<li><%= link_to 'Photos', 'http://photos.pgengler.net' %></li>
+					<li><%= link_to 'Github', 'https://github.com/pgengler' %></li>
+					<li><%= link_to '@pgengler', 'https://twitter.com/pgengler', :title => '@pgengler on Twitter' %></li>
+				</ul>
+			</nav>
 		</div>
 		<div class='row-fluid'>
 			<div class='span8 offset2'>
