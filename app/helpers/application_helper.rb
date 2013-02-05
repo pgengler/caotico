@@ -16,6 +16,7 @@ module ApplicationHelper
 		pipeline = HTML::Pipeline.new([
 			HTML::Pipeline::MarkdownFilter,
 			HTML::Pipeline::SanitizationFilter,
+			HTML::Pipeline::SyntaxHighlightFilter,
 		], context)
 		pipeline.call(text)[:output].to_s.html_safe
 	end
