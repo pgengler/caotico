@@ -21,3 +21,4 @@ gem 'bootstrap-sass', '~> 2.2.2.0'
 
 gem 'rvm-capistrano'
 gem 'capistrano'
+gem 'therubyracer'
