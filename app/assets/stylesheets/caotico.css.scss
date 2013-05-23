@@ -1,19 +1,24 @@
 @import 'bootstrap';
 
 body {
+	background-color: #B3C8DB;
 	font-weight: 300;
 }
 
 .masthead {
-	padding-right: 2em;
+	background-color: #3A678E;
+	padding: 2.25em 0 0 0;
+
+	$headerTextColor: #AEB8C1;
 
 	h1 {
 		font-family: 'PT Mono', Monaco, monospace;
 		font-weight: 400;
 		letter-spacing: 0.35em;
+		margin-bottom: .75em;
 
 		a {
-			color: $textColor;
+			color: $headerTextColor;
 			&:hover {
 				text-decoration: none;
 			}
@@ -26,6 +31,19 @@ body {
 		margin-top: -2em;
 		text-align: right;
 	}
+
+	nav li a {
+		color: $headerTextColor;
+		&:hover {
+			background-color: $headerTextColor;
+			color: #005580;
+		}
+	}
+}
+
+.main-content {
+	background-color: white;
+	padding: 2em 2em 0 2em;
 }
 
 article {
@@ -59,6 +77,7 @@ article {
 }
 
 footer {
+	margin-top: 2em;
 	text-align: center;
 }
 
