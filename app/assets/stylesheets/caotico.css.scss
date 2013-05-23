@@ -26,13 +26,6 @@ body {
 		}
 	}
 
-	p {
-		font-style: italic;
-		letter-spacing: 0.25em;
-		margin-top: -2em;
-		text-align: right;
-	}
-
 	nav li a {
 		color: $headerTextColor;
 		&:hover {

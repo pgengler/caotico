@@ -1,12 +1,5 @@
 module ApplicationHelper
 
-	def subhead
-		[
-			'a perpetual work in progress',
-			'life, the universe, and mostly nothing',
-		].sample
-	end
-
 	def markdown(text)
 		whitelist = HTML::Pipeline::SanitizationFilter::WHITELIST
 		whitelist[:attributes].merge! 'p' => [ 'data-pullquote' ]
