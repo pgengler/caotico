@@ -3,14 +3,16 @@ $linkColor: #3A678E;
 @import 'bootstrap';
 
 body {
+	font: 100%/1.618 $sansFontFamily;
 	font-weight: 300;
 }
 
 .masthead {
-	background-color: #3A678E;
 	padding: 2.25em 0 0 0;
 
-	$headerTextColor: #AEB8C1;
+	& > div {
+		padding-left: 3em;
+	}
 
 	h1 {
 		font-family: 'PT Mono', Monaco, monospace;
@@ -19,7 +21,6 @@ body {
 		margin-bottom: .75em;
 
 		a {
-			color: $headerTextColor;
 			&:hover {
 				text-decoration: none;
 			}
@@ -27,9 +28,8 @@ body {
 	}
 
 	nav li a {
-		color: $headerTextColor;
 		&:hover {
-			background-color: $headerTextColor;
+			background-color: #AEB8C1;
 			color: #005580;
 		}
 	}
@@ -37,12 +37,15 @@ body {
 
 .main-content {
 	background-color: white;
+	border: 1px solid lighten($linkColor, 30%);
 	padding: 2em 2em 0 2em;
 }
 
 article {
-	header {
+	padding-left: 1.618em;
+	padding-right: 1.618em;
 
+	header {
 		margin-bottom: 0.75em;
 
 		h2 {
@@ -58,7 +61,6 @@ article {
 		-webkit-hyphens: auto;
 		-moz-hyphens: auto;
 		hyphens: auto;
-		line-height: 1.5em;
 		text-align: justify;
 	}
 
@@ -68,6 +70,13 @@ article {
 
 	& + article {
 		margin-top: 3em;
+	}
+
+	&:after {
+		content: '⁂';
+		display: block;
+		font-size: 200%;
+		text-align: center;
 	}
 }
 
