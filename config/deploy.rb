@@ -40,4 +40,6 @@ namespace :db do
 	end
 end
 
+after 'deploy', 'deploy:cleanup'
+
 require './config/boot'
