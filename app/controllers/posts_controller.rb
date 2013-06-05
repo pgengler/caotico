@@ -3,11 +3,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page params[:page]
-  end
 
-  def feed
-    @posts = Post.page(1)
     respond_to do |format|
+      format.html
       format.rss { render layout: false }
     end
   end
