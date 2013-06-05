@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :find_post, :only => [ :destroy, :edit, :show, :update ]
+  before_filter :find_post, only: [ :destroy, :edit, :show, :update ]
 
   def index
     @posts = Post.page params[:page]
@@ -18,17 +18,17 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
 
     if @post.save
-      redirect_to @post, :notice => 'Post was successfully created.'
+      redirect_to @post, notice: 'Post was successfully created.'
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
   def update
     if @post.update_attributes(params[:post])
-      redirect_to @post, :notice => 'Post was successfully updated.'
+      redirect_to @post, notice: 'Post was successfully updated.'
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 

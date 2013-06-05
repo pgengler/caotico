@@ -2,10 +2,10 @@
 <html>
 <head>
   <title>pgengler.net</title>
-  <%= stylesheet_link_tag     'application', :media => 'all' %>
+  <%= stylesheet_link_tag     'application', media: 'all' %>
   <%= stylesheet_link_tag     'http://fonts.googleapis.com/css?family=PT+Mono' %>
   <%= javascript_include_tag  'application' %>
-  <%= auto_discovery_link_tag :rss, :action => :index, :format => :rss %>
+  <%= auto_discovery_link_tag :rss, action: :index, format: :rss %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,7 +18,7 @@
 						<li><%= link_to 'Home', root_url %></li>
 						<li><%= link_to 'Photos', 'http://photos.pgengler.net' %></li>
 						<li><%= link_to 'Github', 'https://github.com/pgengler' %></li>
-						<li><%= link_to '@pgengler', 'https://twitter.com/pgengler', :title => '@pgengler on Twitter' %></li>
+						<li><%= link_to '@pgengler', 'https://twitter.com/pgengler', title: '@pgengler on Twitter' %></li>
 					</ul>
 				</nav>
 			</div>
@@ -33,7 +33,7 @@
 	</div>
 	<div class='row-fluid'>
 		<footer class='span12'>
-			<%= link_to image_tag('somerights.png', :alt => 'Creative Commons Attribution License'), 'http://creativecommons.org/licenses/by/2.5' %>
+			<%= link_to image_tag('somerights.png', alt: 'Creative Commons Attribution License'), 'http://creativecommons.org/licenses/by/2.5' %>
 			<br>
 			Licensed under a Creative Commons license
 		</footer>
