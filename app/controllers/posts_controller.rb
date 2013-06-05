@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include PostsHelper
   before_filter :find_post, only: [ :destroy, :edit, :show, :update ]
 
   def index
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
 
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      redirect_to post_path_with_slug(@post), notice: 'Post was successfully created.'
     else
       render action: "new"
     end
@@ -26,7 +27,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update_attributes(params[:post])
-      redirect_to @post, notice: 'Post was successfully updated.'
+      redirect_to post_path_with_slug(@post), notice: 'Post was successfully updated.'
     else
       render action: "edit"
     end

@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
+  include PostsHelper
+
   setup do
     @post = posts(:sample)
   end
@@ -21,7 +23,7 @@ class PostsControllerTest < ActionController::TestCase
       post :create, post: @post.attributes
     end
 
-    assert_redirected_to post_path(assigns(:post))
+    assert_redirected_to post_path_with_slug(assigns(:post))
     assert_equal 'Post was successfully created.', flash[:notice]
   end
 
@@ -38,7 +40,7 @@ class PostsControllerTest < ActionController::TestCase
   test "should update post" do
     put :update, id: @post.to_param, post: @post.attributes
 
-    assert_redirected_to post_path(assigns(:post))
+    assert_redirected_to post_path_with_slug(assigns(:post))
     assert_equal 'Post was successfully updated.', flash[:notice]
   end
 
@@ -65,6 +67,6 @@ class PostsControllerTest < ActionController::TestCase
 	test "post titles should link to post page" do
 		get :index
 
-		assert_select "a[href=#{post_path(@post)}]"
+		assert_select "a[href=#{post_path_with_slug(@post)}]"
 	end
 end
