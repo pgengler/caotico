@@ -22,6 +22,7 @@ class PostsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to post_path(assigns(:post))
+    assert_equal 'Post was successfully created.', flash[:notice]
   end
 
   test "should show post" do
@@ -36,7 +37,9 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should update post" do
     put :update, id: @post.to_param, post: @post.attributes
+
     assert_redirected_to post_path(assigns(:post))
+    assert_equal 'Post was successfully updated.', flash[:notice]
   end
 
   test "should destroy post" do

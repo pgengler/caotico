@@ -1,6 +1,6 @@
 <article>
 	<header>
-		<h2><%= link_to post.title, post_path(post) %></h2>
+		<h2><%= link_to post.title, post_path_with_slug(post) %></h2>
 		<%= time_tag post.created_at %>
 	</header>
 	<section>
