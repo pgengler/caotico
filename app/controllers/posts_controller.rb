@@ -5,6 +5,13 @@ class PostsController < ApplicationController
     @posts = Post.page params[:page]
   end
 
+  def feed
+    @posts = Post.page(1)
+    respond_to do |format|
+      format.rss { render layout: false }
+    end
+  end
+
   def new
     @post = Post.new
   end
