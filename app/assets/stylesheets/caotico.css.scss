@@ -49,11 +49,25 @@ article {
 		margin-bottom: 0.75em;
 
 		h2 {
-			margin-bottom: 0
+			margin-bottom: 0;
 		}
 
-		time {
+		div {
 			font-size: 85%;
+		}
+
+		ul.tags {
+			display: inline-block;
+			list-style-type: none;
+			margin: 0;
+
+			li {
+				display: inline-block;
+
+				&:not(:last-child):after {
+					content: ', '
+				}
+			}
 		}
 	}
 

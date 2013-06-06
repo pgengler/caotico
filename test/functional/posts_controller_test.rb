@@ -77,7 +77,7 @@ class PostsControllerTest < ActionController::TestCase
 	test "list of tags are included with post" do
 		get :show, id: @post.to_param
 
-		assert_select 'article footer' do
+		assert_select 'ul.tags' do
 			assert_select 'li', 'common'
 			assert_select 'li', 'tag14'
 		end

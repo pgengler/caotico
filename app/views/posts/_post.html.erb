@@ -1,17 +1,21 @@
 <article>
 	<header>
 		<h2><%= link_to post.title, post_path_with_slug(post) %></h2>
-		<%= time_tag post.created_at %>
+		<div>
+			Posted:
+			<%= time_tag post.created_at %>
+		</div>
+
+		<div>
+			Tags:
+			<ul class='tags'>
+				<% post.tag_list.each do |tag| %>
+				<li><%= tag %></li>
+				<% end %>
+			</ul>
+		</div>
 	</header>
 	<section>
 		<%= markdown post.content %>
 	</section>
-	<footer>
-		Tags:
-		<ul class='tags'>
-			<% post.tag_list.each do |tag| %>
-			<li><%= tag %></li>
-			<% end %>
-		</ul>
-	</footer>
 </article>
