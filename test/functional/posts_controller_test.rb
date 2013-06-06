@@ -6,7 +6,7 @@ class PostsControllerTest < ActionController::TestCase
   setup do
     # Create 15 sample posts to be able test multipage behavior
     15.times do |i|
-      FactoryGirl.create :post, title: "Factory #{i}"
+      FactoryGirl.create :post, title: "Factory #{i}", tag_list: "common, tag#{i}"
     end
     @post = Post.first
   end
@@ -72,5 +72,14 @@ class PostsControllerTest < ActionController::TestCase
 		get :index
 
 		assert_select "a[href=#{post_path_with_slug(@post)}]"
+	end
+
+	test "list of tags are included with post" do
+		get :show, id: @post.to_param
+
+		assert_select 'article footer' do
+			assert_select 'li', 'common'
+			assert_select 'li', 'tag14'
+		end
 	end
 end

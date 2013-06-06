@@ -6,4 +6,12 @@
 	<section>
 		<%= markdown post.content %>
 	</section>
+	<footer>
+		Tags:
+		<ul class='tags'>
+			<% post.tag_list.each do |tag| %>
+			<li><%= tag %></li>
+			<% end %>
+		</ul>
+	</footer>
 </article>
