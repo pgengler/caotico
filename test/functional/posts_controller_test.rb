@@ -89,4 +89,10 @@ class PostsControllerTest < ActionController::TestCase
 
 		assert_select 'ul.tags', 0
 	end
+
+	test "specifying a tag shows only posts matching that tag" do
+		get :index, tag: 'tag1'
+
+		assert_select 'article', 1
+	end
 end

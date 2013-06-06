@@ -3,7 +3,11 @@ class PostsController < ApplicationController
   before_filter :find_post, only: [ :destroy, :edit, :show, :update ]
 
   def index
-    @posts = Post.page params[:page]
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag]).page(params[:page])
+    else
+      @posts = Post.page(params[:page])
+    end
 
     respond_to do |format|
       format.html
