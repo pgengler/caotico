@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: caotico_test
+  username: postgres
