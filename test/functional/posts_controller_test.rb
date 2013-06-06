@@ -78,8 +78,8 @@ class PostsControllerTest < ActionController::TestCase
 		get :show, id: @post.to_param
 
 		assert_select 'ul.tags' do
-			assert_select 'li', 'common'
-			assert_select 'li', 'tag14'
+			assert_select 'li a', 'common'
+			assert_select 'li a', 'tag14'
 		end
 	end
 
