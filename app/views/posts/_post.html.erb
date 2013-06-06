@@ -6,6 +6,7 @@
 			<%= time_tag post.created_at %>
 		</div>
 
+		<% if post.tag_list.any? %>
 		<div>
 			Tags:
 			<ul class='tags'>
@@ -14,6 +15,7 @@
 				<% end %>
 			</ul>
 		</div>
+		<% end %>
 	</header>
 	<section>
 		<%= markdown post.content %>

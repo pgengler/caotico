@@ -74,12 +74,19 @@ class PostsControllerTest < ActionController::TestCase
 		assert_select "a[href=#{post_path_with_slug(@post)}]"
 	end
 
-	test "list of tags are included with post" do
+	test "list of tags are included when viewing a post with tags" do
 		get :show, id: @post.to_param
 
 		assert_select 'ul.tags' do
 			assert_select 'li', 'common'
 			assert_select 'li', 'tag14'
 		end
+	end
+
+	test "no list of tags is included for posts with no tags" do
+		post = FactoryGirl.create :post
+		get :show, id: post.to_param
+
+		assert_select 'ul.tags', 0
 	end
 end
