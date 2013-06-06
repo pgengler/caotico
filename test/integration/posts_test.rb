@@ -2,10 +2,9 @@ require 'test_helper'
 
 class PostsTest < ActionDispatch::IntegrationTest
 	include PostsHelper
-	fixtures :all
 
 	test "edit post" do
-		@post = posts(:sample)
+		@post = FactoryGirl.create(:post)
 		get edit_post_path(@post)
 		assert_response :success
 

@@ -4,7 +4,11 @@ class PostsControllerTest < ActionController::TestCase
   include PostsHelper
 
   setup do
-    @post = posts(:sample)
+    # Create 15 sample posts to be able test multipage behavior
+    15.times do |i|
+      FactoryGirl.create :post, title: "Factory #{i}"
+    end
+    @post = Post.first
   end
 
   test "should get index" do
