@@ -23,4 +23,5 @@ gem 'rvm-capistrano'
 gem 'capistrano'
 gem 'therubyracer'
 
+gem 'factory_girl'
 gem 'acts-as-taggable-on'

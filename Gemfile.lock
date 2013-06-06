@@ -45,6 +45,8 @@ GEM
     escape_utils (0.2.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
     gemoji (1.4.0)
     github-linguist (2.4.0)
       charlock_holmes (~> 0.6.6)
@@ -154,6 +156,7 @@ DEPENDENCIES
   acts-as-taggable-on
   bootstrap-sass (~> 2.2.2.0)
   capistrano
+  factory_girl
   github-linguist (~> 2.4.0)
   html-pipeline (~> 0.0.7)
   jquery-rails
