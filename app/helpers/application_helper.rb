@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+	def page_title
+		if @title
+			"#{@title} - pgengler.net"
+		else
+			"pgengler.net"
+		end
+	end
+
 	def markdown(text)
 		whitelist = HTML::Pipeline::SanitizationFilter::WHITELIST
 		whitelist[:attributes].merge! 'p' => [ 'data-pullquote' ]

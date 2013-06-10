@@ -15,8 +15,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @title = @post.title
+  end
+
   def new
     @post = Post.new
+    @title = 'New post'
   end
 
   def create
@@ -27,6 +32,10 @@ class PostsController < ApplicationController
     else
       render action: "new"
     end
+  end
+
+  def edit
+    @title = "Edit post #{@post.title}"
   end
 
   def update
