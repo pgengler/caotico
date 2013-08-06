@@ -1,5 +1,5 @@
 require "rvm/capistrano"
-set :rvm_ruby_string, '1.9.3@caotico'
+set :rvm_ruby_string, :local
 set :rvm_type, :system
 
 load 'deploy'
