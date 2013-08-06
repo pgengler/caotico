@@ -7,5 +7,5 @@ load 'deploy'
 load 'deploy/assets'
 load 'config/deploy' # remove this line to skip loading any of the default tasks
 
-before 'deploy:setup', 'rvm:install_rvm'
-before 'deploy:setup', 'rvm:install_ruby'
+before 'deploy', 'rvm:install_rvm'
+before 'deploy', 'rvm:install_ruby'
