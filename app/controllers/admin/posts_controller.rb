@@ -1,4 +1,5 @@
 class Admin::PostsController < ApplicationController
+  include PostsHelper
   before_filter :find_post, only: [ :edit, :update, :destroy ]
 
   def new
