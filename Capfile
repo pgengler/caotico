@@ -1,5 +1,5 @@
 require "rvm/capistrano"
-set :rvm_ruby_string, :local
+set :rvm_ruby_string, '2.0.0@caotico'
 set :rvm_type, :system
 
 load 'deploy'
@@ -7,5 +7,5 @@ load 'deploy'
 load 'deploy/assets'
 load 'config/deploy' # remove this line to skip loading any of the default tasks
 
-before 'deploy', 'rvm:install_rvm'
-before 'deploy', 'rvm:install_ruby'
+before 'deploy:setup', 'rvm:install_rvm'
+before 'deploy:setup', 'rvm:install_ruby'
