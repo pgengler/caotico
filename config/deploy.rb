@@ -14,12 +14,9 @@ set :keep_releases, 5
 server 'minimoose.pgengler.net', :app, :web, :db, primary: true
 
 # Add Configuration Files & Compile Assets
-after 'deploy:update_code' do
-  # Setup Configuration
+before 'deploy:assets:precompile' do
+  # Copy shared database.yml file
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-
-  # Compile Assets
-  run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile"
 end
 
 # Restart Passenger
