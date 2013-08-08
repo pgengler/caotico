@@ -10,7 +10,7 @@
 		<% @posts.each do |post| %>
 		<tr>
 			<td><%= post.id %></td>
-			<td><%= post.title %></td>
+			<td><%= link_to post.title, edit_admin_post_path(post) %></td>
 			<td><%= post.created_at %></td>
 		</tr>
 		<% end %>
