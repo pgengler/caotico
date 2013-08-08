@@ -12,6 +12,11 @@ class Admin::PostsControllerTest < ActionController::TestCase
 		assert_response :success
 	end
 
+	test "'index' action shows a table with a row for each post" do
+		get :index
+		assert_select 'tr', Post.count
+	end
+
 	test "has a 'new' action" do
 		get :new
 		assert_response :success

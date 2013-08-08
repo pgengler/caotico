@@ -2,6 +2,10 @@ class Admin::PostsController < ApplicationController
 	include PostsHelper
 	before_filter :find_post, only: [ :edit, :update, :destroy ]
 
+	def index
+		@posts = Post.all
+	end
+
 	def new
 		@post = Post.new
 		@title = 'New post'
