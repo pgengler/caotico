@@ -14,7 +14,7 @@ class Admin::PostsControllerTest < ActionController::TestCase
 
 	test "'index' action shows a table with a row for each post" do
 		get :index
-		assert_select 'tr', Post.count
+		assert_select 'tbody > tr', Post.count
 	end
 
 	test "has a 'new' action" do
