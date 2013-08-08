@@ -7,6 +7,11 @@ class Admin::PostsControllerTest < ActionController::TestCase
 		@post = FactoryGirl.create(:post, title: "Factory Post")
 	end
 
+	test "has an 'index' action" do
+		get :index
+		assert_response :success
+	end
+
 	test "has a 'new' action" do
 		get :new
 		assert_response :success
