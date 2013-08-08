@@ -1,26 +1,26 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
-  include PostsHelper
+	include PostsHelper
 
-  setup do
-    # Create 15 sample posts to be able test multipage behavior
-    15.times do |i|
-      FactoryGirl.create :post, title: "Factory #{i}", tag_list: "common, tag#{i}"
-    end
-    @post = Post.first
-  end
+	setup do
+		# Create 15 sample posts to be able test multipage behavior
+		15.times do |i|
+			FactoryGirl.create :post, title: "Factory #{i}", tag_list: "common, tag#{i}"
+		end
+		@post = Post.first
+	end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:posts)
-  end
+	test "should get index" do
+		get :index
+		assert_response :success
+		assert_not_nil assigns(:posts)
+	end
 
-  test "should show post" do
-    get :show, id: @post.to_param
-    assert_response :success
-  end
+	test "should show post" do
+		get :show, id: @post.to_param
+		assert_response :success
+	end
 
 	test "index shows no more than 10 posts" do
 		get :index
