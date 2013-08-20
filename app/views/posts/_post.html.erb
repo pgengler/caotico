@@ -1,23 +1,16 @@
-<article>
-	<header>
-		<h2><%= link_to post.title, post_path_with_slug(post) %></h2>
-		<div>
-			Posted:
-			<%= time_tag post.created_at %>
-		</div>
+<section>
+	<div class="eight columns">
+		<h4 class="post_title"><%= link_to post.title, post_path_with_slug(post) %></h4>
+		<a href="archive.html"><span class="post_date"><%= post.created_at %></span></a>
 
-		<% if post.tag_list.any? %>
-		<div>
-			Tags:
-			<ul class='tags'>
-				<% post.tag_list.each do |tag| %>
-				<li><%= link_to tag, tag_path(tag) %></li>
-				<% end %>
-			</ul>
-		</div>
+		<p>
+			<%= markdown post.content %>
+		</p>
+
+		<%= link_to post_path_with_slug(post) do %>
+			<button class="float_right">READ MORE</button>
 		<% end %>
-	</header>
-	<section>
-		<%= markdown post.content %>
-	</section>
-</article>
+
+	</div>
+	<br class="clear">
+</section>
