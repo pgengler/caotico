@@ -50,4 +50,11 @@ Caotico::Application.configure do
   # Compress both stylesheets and JavaScripts
   config.assets.js_compressor  = :uglifier
   config.assets.css_compressor = :scss
+
+  # Add the fonts path
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+  # Precompile additional assets
+	config.assets.precompile += %w( application-ie.css.scss )
+  config.assets.precompile += %w( .svg .eot .woff .ttf )
 end

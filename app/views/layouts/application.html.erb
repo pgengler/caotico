@@ -51,6 +51,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<%= stylesheet_link_tag 'application', media: 'all' %>
 		<%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,800' %>
+<!--[if lte IE 8]>
+		<%= stylesheet_link_tag "application-ie", media: 'all' %>
+<![endif]-->
 		<!--[if lt IE 9]><%= javascript_include_tag 'http://html5shim.googlecode.com/svn/trunk/html5.js' %><![endif]-->
 		<link rel="shortcut icon" href="img/favicon.ico">
 		<%= auto_discovery_link_tag :rss, action: :index, format: :rss %>
