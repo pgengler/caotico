@@ -17,8 +17,6 @@ gem 'kaminari'
 gem 'html-pipeline', '~> 0.0.7'
 gem 'github-linguist', '~> 2.4.0'
 
-gem 'bootstrap-sass', '~> 2.2.2.0'
-
 gem 'rvm-capistrano'
 gem 'capistrano'
 gem 'therubyracer'
