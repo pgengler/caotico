@@ -1,12 +1,11 @@
 <!DOCTYPE html>
+<!--
 <html>
 <head>
 	<title><%= page_title %></title>
 	<%= stylesheet_link_tag     'application', media: 'all' %>
 	<%= stylesheet_link_tag     'http://fonts.googleapis.com/css?family=PT+Mono' %>
 	<%= javascript_include_tag  'application' %>
-	<%= auto_discovery_link_tag :rss, action: :index, format: :rss %>
-	<%= csrf_meta_tags %>
 </head>
 <body>
 	<header class='masthead row-fluid'>
@@ -38,5 +37,129 @@
 			Licensed under a Creative Commons license
 		</footer>
 	</div>
+</body>
+</html>
+
+
+
+<!DOCTYPE html> -->
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+	<head>
+		<title><%= page_title %></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<%= stylesheet_link_tag 'application', media: 'all' %>
+		<%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,800' %>
+		<!--[if lt IE 9]><%= javascript_include_tag 'http://html5shim.googlecode.com/svn/trunk/html5.js' %><![endif]-->
+		<link rel="shortcut icon" href="img/favicon.ico">
+		<%= auto_discovery_link_tag :rss, action: :index, format: :rss %>
+		<%= csrf_meta_tags %>
+<link rel="stylesheet" href="css/font-awesome-ie7.css">
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<header>
+			<h4 class="logo"><%= link_to 'pgengler.net', root_url %>pgengler.net</h4>
+			<div class="menubutton"><i class="icon-reorder"></i></div>
+			<nav>
+				<ul>
+					<li><a href="index.html">HOME</a></li>
+					<li><a href="about.html">ABOUT</a></li>
+					<li><a href="archive.html">ARCHIVE</a></li>
+					<li><a href="contact.html">CONTACT</a></li>
+					<li class="search"><i class="icon-search"></i><i class="icon-remove"></i></li>
+				</ul>
+
+				<div class="search_popup">
+					<form>
+						<input type="text" value="Search..." onfocus="if (this.value == 'Search...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search...';}"></input>
+						<button type="submit">Search</button>
+					</form>
+				</div>
+			</nav>
+			<br class="clear">
+		</header>
+
+	<section>
+		<div class="eight columns">
+			<h4 class="post_title"><a href="single-post.html">Post title</a></h4>
+			<a href="archive.html"><span class="post_date">Post date</span></a>
+
+			<p>Text here</p>
+
+			<blockquote>Blockquote here</blockquote>
+
+			<a href="single-post.html"><button class="float_right">READ MORE</button></a>
+		
+		</div>
+		<br class="clear">
+	</section>
+		
+	<section class="quote">
+		<p>Quote here
+		<span class="author">Quote author</span></p>
+	</section>
+
+
+	<div class="post_video">
+		<iframe src="http://player.vimeo.com/video/25708134?title=0&amp;byline=0&amp;portrait=0" width="1200" height="675" frameborder="0"></iframe>
+	</div>
+	<section>
+		<div class="eight columns">
+			<h4 class="post_title"><a href="single-post.html">Video post</a></h4>
+			<a href="archive.html"><span class="post_date">Post date</span></a>
+
+			<p>Text here.</p>
+
+			<a href="single-post.html"><button class="float_right">READ MORE</button></a>
+			
+			</div>
+		<br class="clear">
+	</section>
+
+	<div class="pagination">
+		<button class="light"><i class="icon-chevron-left"></i></button>
+		<button class="light">1</button>
+		<button>2</button>
+		<button class="light">3</button>
+		<button class="light">4</button>
+		<button class="light">5</button>
+		<button class="light">6</button>
+		<button class="light"><i class="icon-chevron-right"></i></button>
+	</div>
+
+	<footer>
+		<div class="slate">
+			<div class="four columns">
+				<h5>Find us on Twitter <a href="#">@your username</a></h5>
+				<div class="tweet"></div>
+			</div>
+			<div class="four columns">
+				<h5>Footer widget</h5>
+				<p>Text here</p>
+				<a href="#"><button class="facebook"><i class="icon-facebook"></i></button></a>
+				<a href="#"><button class="twitter"><i class="icon-twitter"></i></button></a>
+				<a href="#"><button class="linkedin"><i class="icon-linkedin"></i></button></a>
+				<a href="#"><button class="google_plus"><i class="icon-google-plus"></i></button></a>
+				<a href="#"><button class="pinterest"><i class="icon-pinterest"></i></button></a>
+			</div>
+		</div>
+	</footer>
+
+	<!-- JS
+	================================================== -->
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery.tweet.js"></script>
+	<script src="js/jquery.fitvids.js"></script>
+	<script src="js/respond.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+	<script src="js/script.js"></script>
+
+
+<!-- End Document
+================================================== -->
 </body>
 </html>
