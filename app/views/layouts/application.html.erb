@@ -51,7 +51,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<%= stylesheet_link_tag 'application', media: 'all' %>
 		<%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,800' %>
-		<%= javascript_include_tag  'application' %>
 		<!--[if lt IE 9]><%= javascript_include_tag 'http://html5shim.googlecode.com/svn/trunk/html5.js' %><![endif]-->
 		<link rel="shortcut icon" href="img/favicon.ico">
 		<%= auto_discovery_link_tag :rss, action: :index, format: :rss %>
@@ -100,11 +99,7 @@
 			</div>
 		</footer>
 
-		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-		<script src="js/jquery.tweet.js"></script>
-		<script src="js/jquery.fitvids.js"></script>
-		<script src="js/respond.min.js"></script>
-		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
-		<script src="js/script.js"></script>
+		<%= javascript_include_tag 'application' %>
+		<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js' %>
 	</body>
 </html>
