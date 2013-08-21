@@ -7,6 +7,10 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<li class="page<%= ' active' if page.current? %>">
-  <%= link_to page, url, opts = {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil} %>
-</li>
+<% if page.current? %>
+	<button><%= page %></button>
+<% else %>
+	<%= link_to url, { rel: (page.next? ? 'next' : page.prev? ? 'prev' : nil), remote: remote } do %>
+		<button class="light"><%= page %></button>
+	<% end %>
+<% end %>
