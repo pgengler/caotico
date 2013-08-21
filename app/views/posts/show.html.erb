@@ -5,5 +5,19 @@
 </div>
 <% end %>
 
-<%= render @post %>
+<section>
+	<div class="eight columns">
+		<h4 class="post_title"><%= link_to @post.title, post_path_with_slug(@post) %></h4>
+		<a href="archive.html"><%= time_tag @post.created_at, class: 'post_date' %></a>
+
+		<%= markdown(@post.content) %>
+
+		<div class="metadata">
+			<span>
+				<i class="icon-list" title="Tags"></i>
+		</div>
+	</div>
+
+	<br class="clear">
+</section>
 
