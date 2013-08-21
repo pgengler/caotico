@@ -712,53 +712,68 @@ footer h4, footer h5, footer h6 {
 }
 
 /* Social buttons */
-button.facebook, button.twitter, button.linkedin, button.google_plus, button.pinterest {
-    height: 40px;
-    width: 40px;
-    padding: 13px;
-    margin-bottom: 5px;
+button.facebook, button.twitter, button.linkedin, button.google_plus, button.pinterest, button.github {
+	height: 40px;
+	width: 40px;
+	padding: 13px;
+	margin-bottom: 5px;
+	font-size: 150%;
 }
+
+$facebookButtonColor: #3b5998;
+$githubButtonColor: #4183c4;
+$googleplusButtonColor: #444;
+$linkedinButtonColor: #204c8b;
+$pinterestButtonColor: #d01c2c;
+$twitterButtonColor: #33ccff;
 
 button.facebook {
-    background: #3b5998;
+	background: $facebookButtonColor;
+
+	&:hover {
+		background: darken($facebookButtonColor, 10%);
+	}
 }
 
-button.facebook:hover {
-    background: #2d4577;
-}
+button.github {
+	background: $githubButtonColor;
 
-button.twitter {
-    background: #33ccff;
-}
-
-button.twitter:hover {
-    background: #19abdc;
-}
-
-button.linkedin {
-    background: #4875b4;
-}
-
-button.linkedin:hover {
-    background: #204c8b;
+	&:hover {
+		background: darken($githubButtonColor, 10%);
+	}
 }
 
 button.google_plus {
-    background: #444;
+	background: $googleplusButtonColor;
+
+	&:hover {
+		background: darken($googleplusButtonColor, 10%);
+	}
 }
 
-button.google_plus:hover {
-    background: #373737;
+button.linkedin {
+	background: $linkedinButtonColor;
+
+	&:hover {
+		background: darken($linkedinButtonColor, 10%);
+	}
 }
 
 button.pinterest {
-    background: #d01c2c;
+	background: $pinterestButtonColor;
+
+	&:hover {
+		background: darken($pinterestButtonColor, 10%);
+	}
 }
 
-button.pinterest:hover {
-    background: #970b18;
-}
+button.twitter {
+	background: $twitterButtonColor;
 
+	&:hover {
+		background: darken($twitterButtonColor, 10%);
+	}
+}
 
 /* --------------------------------------------------------------
 Twitter
