@@ -12,10 +12,13 @@
 
 		<%= markdown(@post.content) %>
 
+		<% if @post.tag_list.any? %>
 		<div class="metadata">
 			<span>
 				<i class="icon-list" title="Tags"></i>
+				<%= tag_list(@post) %>
 		</div>
+		<% end %>
 	</div>
 
 	<br class="clear">

@@ -8,6 +8,12 @@ module PostsHelper
 		add_slug post_url(post), post
 	end
 
+	def tag_list(post)
+		post.tag_list.map { |tag|
+			link_to tag, tag_path(tag)
+		}.join(' / ').html_safe
+	end
+
 private
 
 	def add_slug(base, post)
