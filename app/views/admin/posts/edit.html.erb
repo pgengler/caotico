@@ -1,8 +1,13 @@
-<h1>Editing post</h1>
+<section>
+	<div class="eight columns">
+		<h1>Editing post</h1>
 
-<%= render 'form' %>
+		<%= render 'form' %>
 
-<%= link_to 'Delete', admin_post_path(@post), method: :delete, confirm: 'Really delete this post?', class: 'btn btn-danger' %>
-<br>
-<%= link_to 'Show', post_path_with_slug(@post) %> |
-<%= link_to 'Back', posts_path %>
+		<%= link_to 'Delete', admin_post_path(@post), method: :delete, confirm: 'Really delete this post?', class: 'btn btn-danger' %>
+		<br>
+		<%= link_to 'Show', post_path_with_slug(@post) %> |
+		<%= link_to 'Back', posts_path %>
+	</div>
+	<br class="clear">
+</section>

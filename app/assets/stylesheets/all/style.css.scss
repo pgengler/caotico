@@ -258,36 +258,36 @@ strong  { font-weight: bold;}
 /* --------------------------------------------------------------
 Buttons
 -------------------------------------------------------------- */
-button {
-    display: inline-block;
-    border: 0;
-    outline: 0;
-    margin: 0;
-    padding: 15px;
-    height: 44px;
-    background: #ff6644;
-    color: #fff;
-    font: 14px/14px 'Open Sans', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    -webkit-border-radius: 3px;
-       -moz-border-radius: 3px;
-            border-radius: 3px;
-    -webkit-box-sizing: border-box;     /* Safari/Chrome, other WebKit */
-       -moz-box-sizing: border-box;     /* Firefox, other Gecko */
-            box-sizing: border-box;     /* Opera/IE 8+ */
-    -webkit-font-smoothing:antialiased;
-    -webkit-text-size-adjust:none;
-    box-shadow: 0 1px 2px rgba(0,0,0,.15);
-}
+button, input[type=button], input[type=submit] {
+	display: inline-block;
+	border: 0;
+	outline: 0;
+	margin: 0;
+	padding: 15px;
+	height: 44px;
+	background: #ff6644;
+	color: #fff;
+	font: 14px/14px 'Open Sans', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+	  -webkit-border-radius: 3px;
+		   -moz-border-radius: 3px;
+	          border-radius: 3px;
+	  -webkit-box-sizing: border-box;     /* Safari/Chrome, other WebKit */
+	     -moz-box-sizing: border-box;     /* Firefox, other Gecko */
+	          box-sizing: border-box;     /* Opera/IE 8+ */
+	-webkit-font-smoothing:antialiased;
+	-webkit-text-size-adjust:none;
+	box-shadow: 0 1px 2px rgba(0,0,0,.15);
 
-button:hover {
-    background: #c93c1d;
-    -webkit-transition:all .25s ease-in-out;
-    -moz-transition:all .25s ease-in-out;
-    -o-transition:all .25s ease-in-out;
-    transition:all .25s ease-in-out; 
+	&:hover {
+		background: #c93c1d;
+		-webkit-transition:all .25s ease-in-out;
+		-moz-transition:all .25s ease-in-out;
+		-o-transition:all .25s ease-in-out;
+		transition:all .25s ease-in-out;
+	}
 }
 
 button:active {
@@ -656,26 +656,28 @@ Archive
 
 
 /* --------------------------------------------------------------
-Contact form
+Styled forms
 -------------------------------------------------------------- */
-.contact h6 {
-    text-transform: uppercase;
-    color: #aaa;
-}
+form.styled {
+	h6 {
+		text-transform: uppercase;
+		color: #aaa;
+	}
 
-.contact input {
-    width: 100%;
-    margin-bottom: 40px;
-}
+	input:not([type=submit]) {
+		width: 100%;
+		margin-bottom: 40px;
+	}
 
-.contact textarea {
-    width: 100%;
-    min-height: 140px;
-    margin-bottom: 40px;
-}
+	textarea {
+		width: 100%;
+		min-height: 140px;
+		margin-bottom: 40px;
+	}
 
-.contact button {
-    float: right;
+	.button {
+		float: right;
+	}
 }
 
 .message {
