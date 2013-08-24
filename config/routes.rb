@@ -3,7 +3,6 @@ Caotico::Application.routes.draw do
   namespace :admin do
     resources :posts
   end
-  resources :static_pages
   get '/posts/:id/*slug' => 'posts#show'
   get 'tags/:tag', to: 'posts#index', as: :tag
 
