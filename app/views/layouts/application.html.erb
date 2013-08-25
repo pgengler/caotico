@@ -13,7 +13,7 @@
 <![endif]-->
 		<!--[if lt IE 9]><%= javascript_include_tag 'http://html5shim.googlecode.com/svn/trunk/html5.js' %><![endif]-->
 		<link rel="shortcut icon" href="img/favicon.ico">
-		<%= auto_discovery_link_tag :rss, action: :index, format: :rss %>
+		<%= auto_discovery_link_tag :rss, { controller: 'posts', action: :index, format: :rss } %>
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
@@ -23,7 +23,7 @@
 			<nav>
 				<ul>
 					<li><%= link_to 'HOME', root_url %></li>
-					<li><a href="about.html">ABOUT</a></li>
+					<li><%= link_to 'ABOUT', about_url %></li>
 					<li><a href="archive.html">ARCHIVE</a></li>
 					<li><a href="contact.html">CONTACT</a></li>
 					<li class="search"><i class="icon-search"></i><i class="icon-remove"></i></li>
