@@ -5,7 +5,7 @@
 </div>
 <% end %>
 
-<section>
+<section class="post">
 	<div class="eight columns">
 		<h4 class="post_title"><%= link_to @post.title, post_path_with_slug(@post) %></h4>
 		<a href="archive.html"><%= time_tag @post.created_at, class: 'post_date' %></a>
