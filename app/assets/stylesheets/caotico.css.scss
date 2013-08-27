@@ -1,3 +1,9 @@
+@mixin hyphens($value: auto) {
+	-moz-hyphens: $value;
+	-webkit-hyphens: $value;
+	hyphens: $value;
+}
+
 code, pre {
 	font-family: monospace;
 	font-size: 90%;
@@ -19,4 +25,13 @@ pre {
 	text-align: right;
 	text-indent: 0;
 	width: 20%;
+
+	@include hyphens(none);
+}
+
+.post {
+	p {
+		@include hyphens(auto);
+		text-align: justify;
+	}
 }
