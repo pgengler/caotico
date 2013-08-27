@@ -9,3 +9,14 @@ pre {
 	padding: 1em;
 }
 
+
+[data-pullquote]:before {
+	content: attr(data-pullquote);
+	float: right;
+	font-size: 110%;
+	line-height: 1em;
+	margin: 1em 0 1em 2em;
+	text-align: right;
+	text-indent: 0;
+	width: 20%;
+}
