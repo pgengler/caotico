@@ -1,18 +1,23 @@
-<table class='table table-striped'>
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Title</th>
-			<th>Posted</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @posts.each do |post| %>
-		<tr>
-			<td><%= post.id %></td>
-			<td><%= link_to post.title, edit_admin_post_path(post) %></td>
-			<td><%= post.created_at %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+<section>
+	<div class="eight columns">
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Title</th>
+					<th>Posted</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @posts.each do |post| %>
+				<tr>
+					<td><%= post.id %></td>
+					<td><%= link_to post.title, edit_admin_post_path(post) %></td>
+					<td><%= post.created_at %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<br class="clear">
+</section>

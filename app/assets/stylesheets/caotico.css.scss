@@ -35,3 +35,21 @@ pre {
 		text-align: justify;
 	}
 }
+
+table {
+	width: 100%;
+
+	thead th {
+		font-weight: bold;
+	}
+
+	tbody {
+		tr:nth-child(odd) {
+			background-color: #EFEDE7;
+		}
+
+		td {
+			padding: 1em;
+		}
+	}
+}
