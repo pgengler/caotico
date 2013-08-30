@@ -4,11 +4,6 @@
 		<a href="archive.html"><%= time_tag post.created_at, class: 'post_date' %></a>
 
 		<%= markdown post.content %>
-
-		<%= link_to post_path_with_slug(post) do %>
-			<button class="float_right">READ MORE</button>
-		<% end %>
-
 	</div>
 	<br class="clear">
 </section>
