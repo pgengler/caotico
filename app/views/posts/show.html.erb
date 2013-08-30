@@ -8,17 +8,19 @@
 <section class="post">
 	<div class="eight columns">
 		<h4 class="post_title"><%= link_to @post.title, post_path_with_slug(@post) %></h4>
-		<a href="archive.html"><%= time_tag @post.created_at, class: 'post_date' %></a>
 
 		<%= markdown(@post.content) %>
 
-		<% if @post.tag_list.any? %>
 		<div class="metadata">
 			<span>
+			<i class="icon-time" title="Date Posted"></i>
+			<%= time_tag @post.created_at %>
+			<% if @post.tag_list.any? %>
+				<br>
 				<i class="icon-list" title="Tags"></i>
 				<%= tag_list(@post) %>
+			<% end %>
 		</div>
-		<% end %>
 	</div>
 
 	<br class="clear">
