@@ -9,6 +9,12 @@
 
 ==================================================*/
 
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	   -moz-border-radius: $radius;
+	        border-radius: $radius;
+}
+
 @mixin box-sizing($value: border-box) {
 	-webkit-box-sizing: $value;     /* Safari/Chrome, other WebKit */
 	   -moz-box-sizing: $value;     /* Firefox, other Gecko */
@@ -133,10 +139,8 @@ input, textarea {
 	background: #e5e5e5;
 	color: #999;
 	font: 14px/14px 'Open Sans', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, "Lucida Grande", sans-serif;
-	-webkit-border-radius: 3px;
-	   -moz-border-radius: 3px;
-	        border-radius: 3px;
 
+	@include border-radius(3px);
 	@include box-sizing(border-box);
 
 	&:focus {
@@ -280,10 +284,8 @@ button, input[type=button], input[type=submit] {
 	font-weight: bold;
 	text-transform: uppercase;
 	cursor: pointer;
-	  -webkit-border-radius: 3px;
-		   -moz-border-radius: 3px;
-	          border-radius: 3px;
 
+	@include border-radius(3px);
 	@include box-sizing(border-box);
 
 	-webkit-font-smoothing:antialiased;
@@ -381,10 +383,9 @@ header .search_popup {
 	padding: 15px;
 	background: #fff;
 	z-index: 1000;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
 	box-shadow: 0 1px 2px rgba(0,0,0,.2), inset 0 -1px 3px #f6f4ee;
+
+	@include border-radius(3px);
 }
 
 header .search_popup input {
@@ -422,9 +423,9 @@ section {
 	max-width: 860px;
 	margin: 0 auto;
 	margin-bottom: 40px;
-	border-radius: 5px;
 	box-shadow: 0 1px 2px rgba(0,0,0,.2), inset 0 -1px 3px #f6f4ee;
 
+	@include border-radius(5px);
 	@include box-sizing(border-box);
 }
 
