@@ -9,6 +9,12 @@
 
 ==================================================*/
 
+@mixin box-sizing($value: border-box) {
+	-webkit-box-sizing: $value;     /* Safari/Chrome, other WebKit */
+	   -moz-box-sizing: $value;     /* Firefox, other Gecko */
+	        box-sizing: $value;     /* Opera/IE 8+ */
+}
+
 
 /* --------------------------------------------------------------
 CSS Reset
@@ -130,11 +136,10 @@ input, textarea {
 	-webkit-border-radius: 3px;
 	   -moz-border-radius: 3px;
 	        border-radius: 3px;
-	-webkit-box-sizing: border-box;     /* Safari/Chrome, other WebKit */
-	   -moz-box-sizing: border-box;     /* Firefox, other Gecko */
-	        box-sizing: border-box;     /* Opera/IE 8+ */
 
-	&:focus
+	@include box-sizing(border-box);
+
+	&:focus {
 		background: #f2f2f2;
 	}
 }
@@ -149,9 +154,8 @@ Grid
 	padding: 0 30px;
 	margin-bottom: 30px;
 	margin: 0 auto;
-	-webkit-box-sizing: border-box;     /* Safari/Chrome, other WebKit */
-	   -moz-box-sizing: border-box;     /* Firefox, other Gecko */
-	        box-sizing: border-box;     /* Opera/IE 8+ */
+
+	@include box-sizing(border-box);
 }
 
 .eight.columns     { width: 100%;  }
@@ -279,9 +283,9 @@ button, input[type=button], input[type=submit] {
 	  -webkit-border-radius: 3px;
 		   -moz-border-radius: 3px;
 	          border-radius: 3px;
-	  -webkit-box-sizing: border-box;     /* Safari/Chrome, other WebKit */
-	     -moz-box-sizing: border-box;     /* Firefox, other Gecko */
-	          box-sizing: border-box;     /* Opera/IE 8+ */
+
+	@include box-sizing(border-box);
+
 	-webkit-font-smoothing:antialiased;
 	-webkit-text-size-adjust:none;
 	box-shadow: 0 1px 2px rgba(0,0,0,.15);
@@ -321,9 +325,8 @@ header {
 	margin-bottom: 60px;
 	padding: 0 80px;
 	position: relative;
-	-webkit-box-sizing: border-box;     /* Safari/Chrome, other WebKit */
-	   -moz-box-sizing: border-box;     /* Firefox, other Gecko */
-	        box-sizing: border-box;     /* Opera/IE 8+ */
+
+	@include box-sizing(border-box);
 }
 
 header .logo {
@@ -421,9 +424,8 @@ section {
 	margin-bottom: 40px;
 	border-radius: 5px;
 	box-shadow: 0 1px 2px rgba(0,0,0,.2), inset 0 -1px 3px #f6f4ee;
-	-webkit-box-sizing: border-box;     /* Safari/Chrome, other WebKit */
-	   -moz-box-sizing: border-box;     /* Firefox, other Gecko */
-	        box-sizing: border-box;     /* Opera/IE 8+ */
+
+	@include box-sizing(border-box);
 }
 
 .post_image, .post_video {
@@ -534,9 +536,8 @@ blockquote {
 	border-left: 10px solid #ff6644;
 	font-size: 18px;
 	color: #838689;
-	-webkit-box-sizing: border-box;     /* Safari/Chrome, other WebKit */
-	   -moz-box-sizing: border-box;     /* Firefox, other Gecko */
-	        box-sizing: border-box;     /* Opera/IE 8+ */
+
+	@include box-sizing(border-box);
 }
 
 
