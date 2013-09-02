@@ -1,12 +1,10 @@
-<% if notice %>
-<div class='alert alert-success'>
-	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	<%= notice %>
-</div>
-<% end %>
-
 <section class="post">
 	<div class="eight columns">
+		<% if notice %>
+		<div class="alert success">
+			<%= notice %>
+		</div>
+		<% end %>
 		<h4 class="post_title"><%= link_to @post.title, post_path_with_slug(@post) %></h4>
 
 		<%= markdown(@post.content) %>
