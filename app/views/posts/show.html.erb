@@ -10,7 +10,6 @@
 		<%= markdown(@post.content) %>
 
 		<div class="metadata">
-			<span>
 			<i class="icon-time" title="Date Posted"></i>
 			<%= time_tag @post.created_at %>
 			<% if @post.tag_list.any? %>
