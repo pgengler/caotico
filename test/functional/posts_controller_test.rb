@@ -25,7 +25,7 @@ class PostsControllerTest < ActionController::TestCase
 	test "index shows no more than 10 posts" do
 		get :index
 
-		assert_select 'article', 10
+		assert_select 'section.post', 10
 	end
 
 	test "should show date created for posts" do
@@ -59,6 +59,6 @@ class PostsControllerTest < ActionController::TestCase
 	test "specifying a tag shows only posts matching that tag" do
 		get :index, tag: 'tag1'
 
-		assert_select 'article', 1
+		assert_select 'section.post', 1
 	end
 end
