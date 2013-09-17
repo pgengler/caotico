@@ -10,11 +10,9 @@ module PostsHelper
 
 	def tag_list(post)
 		content_tag(:ul, class: 'tags') do
-			post.tag_list.map { |tag|
-				content_tag(:li) do
-					link_to tag, tag_path(tag)
-				end
-			}.join('').html_safe
+			post.tag_list.collect do |tag|
+				concat content_tag(:li) { link_to tag, tag_path(tag) }
+			end
 		end
 	end
 
