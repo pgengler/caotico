@@ -103,3 +103,17 @@ table {
 span.tagline {
 	font-style: italic;
 }
+
+ul.tags {
+	display: inline-block;
+	list-style-type: none;
+
+	li {
+		display: inline-block;
+
+		&:not(:last-child):after {
+			content: '/';
+			padding: 0 3px;
+		}
+	}
+}
