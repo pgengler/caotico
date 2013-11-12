@@ -11,7 +11,7 @@ set :admin_runner,  'www-data'
 set :rails_env,     'production'
 set :keep_releases, 5
 
-server 'minimoose.pgengler.net', :app, :web, :db, primary: true
+server 'hyperion.pgengler.net', :app, :web, :db, primary: true
 
 before 'deploy:finalize_update' do
   # Link shared database.yml file
