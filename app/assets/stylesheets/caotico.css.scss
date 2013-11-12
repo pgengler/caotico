@@ -28,7 +28,7 @@ pre {
 	@include hyphens(none);
 }
 
-.post {
+.post, .about {
 	p {
 		@include hyphens(auto);
 		text-align: justify;
