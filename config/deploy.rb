@@ -13,10 +13,9 @@ set :keep_releases, 5
 
 server 'minimoose.pgengler.net', :app, :web, :db, primary: true
 
-# Add Configuration Files & Compile Assets
-before 'deploy:assets:precompile' do
-  # Copy shared database.yml file
-  run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+before 'deploy:finalize_update' do
+  # Link shared database.yml file
+  run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 end
 
 # Restart Passenger
