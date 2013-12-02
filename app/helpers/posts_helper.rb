@@ -16,6 +16,11 @@ module PostsHelper
 		end
 	end
 
+	def summary(post, num_chars=200)
+		text_content(markdown(post.content)).slice(0..num_chars)
+	end
+
+
 private
 
 	def add_slug(base, post)

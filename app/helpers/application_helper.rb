@@ -22,4 +22,8 @@ module ApplicationHelper
 		pipeline.call(text)[:output].to_s.html_safe
 	end
 
+	def text_content(html)
+		strip_tags html
+	end
+
 end
