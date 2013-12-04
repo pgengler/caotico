@@ -48,5 +48,7 @@ module Caotico
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+		config.i18n.enforce_available_locales = true
   end
 end
