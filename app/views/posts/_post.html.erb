@@ -1,7 +1,7 @@
 <section class="post">
 	<div class="eight columns">
 		<h4 class="post_title"><%= link_to post.title, post_path_with_slug(post) %></h4>
-		<%= time_tag post.created_at, class: 'post_date' %>
+		<%= time_tag local_time(post.created_at), class: 'post_date' %>
 
 		<%= markdown post.content %>
 	</div>

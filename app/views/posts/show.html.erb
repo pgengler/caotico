@@ -11,7 +11,7 @@
 
 		<div class="metadata">
 			<i class="icon-time" title="Date Posted"></i>
-			<%= time_tag @post.created_at %>
+			<%= time_tag local_time(@post.created_at) %>
 			<% if @post.tag_list.any? %>
 				<br>
 				<i class="icon-list" title="Tags"></i>

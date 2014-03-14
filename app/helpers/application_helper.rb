@@ -26,4 +26,8 @@ module ApplicationHelper
 		strip_tags html
 	end
 
+	def local_time(time)
+		time.in_time_zone('Eastern Time (US & Canada)')
+	end
+
 end
