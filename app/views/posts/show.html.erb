@@ -7,7 +7,7 @@
 		<% end %>
 		<h4 class="post_title"><%= link_to @post.title, post_path_with_slug(@post) %></h4>
 
-		<%= markdown(@post.content) %>
+		<%= @post.rendered_content.html_safe %>
 
 		<div class="metadata">
 			<i class="icon-time" title="Date Posted"></i>
