@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
 
-	attr_accessible :title, :content, :tag_list
+	include ApplicationHelper
+
+	attr_accessible :title, :content, :rendered_content, :tag_list
 	acts_as_ordered_taggable
 
 	default_scope order('created_at DESC')
@@ -8,5 +10,13 @@ class Post < ActiveRecord::Base
 
 	validates :title, presence: true
 	validates :content, presence: true
+
+	before_save :render_markdown
+
+	private
+
+	def render_markdown
+		rendered_content = markdown(content)
+	end
 
 end
