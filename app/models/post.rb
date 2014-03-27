@@ -16,7 +16,7 @@ class Post < ActiveRecord::Base
 	private
 
 	def render_markdown
-		rendered_content = markdown(content)
+		self.rendered_content = markdown(self.content)
 	end
 
 end
