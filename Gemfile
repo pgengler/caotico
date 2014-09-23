@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.0'
+gem 'rails', '~> 4.1.0'
 
 gem 'pg'
 
 group :assets do
-	gem 'sass-rails', '~> 3.2.0'
-	gem 'uglifier', '>= 1.0.3'
+	gem 'sass-rails'
+	gem 'uglifier'
 end
 
 gem 'jquery-rails'
