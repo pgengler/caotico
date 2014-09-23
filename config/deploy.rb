@@ -1,36 +1,29 @@
-require 'bundler/capistrano'
+# config valid only for Capistrano 3.1
+lock '3.2.1'
 
 set :application, 'caotico'
+set :repo_url, 'git://github.com/pgengler/caotico.git'
+
+# Default branch is :master
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+
+# Default deploy_to directory is /var/www/my_app
 set :deploy_to, '/srv/apps/caotico'
 
-set :repository, 'git://github.com/pgengler/caotico.git'
-set :scm, 'git'
-set :branch, 'master'
+# Default value for :linked_files is []
+set :linked_files, %w{ .env }
 
-set :user, 'caotico'
-set :use_sudo, false
-set :rvm_install_with_sudo, true
-set :rails_env, 'production'
-set :keep_releases, 5
+# Default value for linked_dirs is []
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-server 'hyperion.pgengler.net', :app, :web, :db, primary: true
+namespace :deploy do
 
-before 'deploy:finalize_update' do
-  # Link shared database.yml file
-  run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-end
-
-# Restart Passenger
-deploy.task :restart, roles: :app do
-  run "touch #{current_path}/tmp/restart.txt"
-end
-
-namespace :db do
-	task :seed do
-		run "cd #{current_path}; RAILS_ENV=production bundle exec rake db:seed"
+	desc 'Restart application'
+	task :restart do
+		on roles(:app), in: :sequence, wait: 5 do
+			invoke 'unicorn:restart'
+		end
 	end
+
+	after :publishing, :restart
 end
-
-after 'deploy', 'deploy:cleanup'
-
-require './config/boot'

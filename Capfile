@@ -1,11 +1,13 @@
-require "rvm/capistrano"
-set :rvm_ruby_string, :local
-set :rvm_type, :system
+# Load DSL and Setup Up Stages
+require 'capistrano/setup'
 
-load 'deploy'
-# Uncomment if you are using Rails' asset pipeline
-load 'deploy/assets'
-load 'config/deploy' # remove this line to skip loading any of the default tasks
+# Includes default deployment tasks
+require 'capistrano/deploy'
 
-before 'deploy:setup', 'rvm:install_rvm'
-before 'deploy:setup', 'rvm:install_ruby'
+require 'capistrano/rvm'
+require 'capistrano/bundler'
+require 'capistrano/rails'
+require 'capistrano3/unicorn'
+
+# Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
+Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }

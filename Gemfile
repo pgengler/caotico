@@ -17,9 +17,13 @@ gem 'kaminari'
 gem 'html-pipeline', '~> 0.0.7'
 gem 'github-linguist', '~> 2.10.0'
 
-gem 'rvm-capistrano'
-gem 'capistrano'
-gem 'therubyracer'
-
 gem 'factory_girl_rails', '~> 4.0'
 gem 'acts-as-taggable-on'
+
+group :development do
+	gem 'capistrano', '~> 3.0'
+	gem 'capistrano-rails'
+	gem 'capistrano-rvm'
+	gem 'capistrano-bundler'
+	gem 'capistrano3-unicorn'
+end
