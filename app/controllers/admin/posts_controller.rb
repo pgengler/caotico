@@ -12,7 +12,7 @@ class Admin::PostsController < ApplicationController
 	end
 
 	def create
-		@post = Post.new(params[:post])
+		@post = Post.new(post_params)
 
 		if @post.save
 			redirect_to post_path_with_slug(@post), notice: 'Post was successfully created.'
@@ -26,7 +26,7 @@ class Admin::PostsController < ApplicationController
 	end
 
 	def update
-		if @post.update_attributes(params[:post])
+		if @post.update_attributes(post_params)
 			redirect_to post_path_with_slug(@post), notice: 'Post was successfully updated.'
 		else
 			render action: "edit"
@@ -43,6 +43,10 @@ class Admin::PostsController < ApplicationController
 
 		def find_post
 			@post = Post.find(params[:id])
+		end
+
+		def post_params
+			params.require(:post).permit(:title, :content, :tag_list)
 		end
 
 end
