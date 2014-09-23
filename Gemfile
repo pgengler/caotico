@@ -20,6 +20,9 @@ gem 'github-linguist', '~> 2.10.0'
 gem 'factory_girl_rails', '~> 4.0'
 gem 'acts-as-taggable-on'
 
+gem 'dotenv-rails'
+gem 'unicorn'
+
 group :development do
 	gem 'capistrano', '~> 3.0'
 	gem 'capistrano-rails'
