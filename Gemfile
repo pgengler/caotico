@@ -13,9 +13,10 @@ gem 'jquery-rails'
 
 gem 'kaminari'
 
-# use HTML::Pipeline for Markdown parsing
-gem 'html-pipeline', '~> 0.0.7'
-gem 'github-linguist', '~> 2.10.0'
+gem 'html-pipeline', '~> 1.11.0'
+gem 'sanitize', '~> 3.0.2'
+gem 'github-linguist', '~> 3.1.5'
+gem 'github-markdown', '~> 0.6.7'
 
 gem 'factory_girl_rails', '~> 4.0'
 gem 'acts-as-taggable-on'
