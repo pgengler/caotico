@@ -127,3 +127,18 @@ input, textarea {
 header {
 	margin-top: 45px;
 }
+
+section {
+	.post_date {
+		display: block;
+		margin-bottom: 1em;
+		margin-top: -2em;
+		position: relative;
+		right: 0;
+		top: 0;
+	}
+
+	.post_title {
+		max-width: 100%;
+	}
+}
