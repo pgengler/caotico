@@ -3,6 +3,7 @@ lock '3.2.1'
 
 set :application, 'caotico'
 set :repo_url, 'git://github.com/pgengler/caotico.git'
+set :ssh_options, { forward_agent: true }
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -21,7 +22,7 @@ namespace :deploy do
 	desc 'Restart application'
 	task :restart do
 		on roles(:app), in: :sequence, wait: 5 do
-			invoke 'unicorn:restart'
+			invoke 'puma:restart'
 		end
 	end
 
