@@ -30,7 +30,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: rails
+  username: caotico
 
   # The password associated with the postgres role (username).
   password: rails
@@ -59,7 +59,7 @@ development:
 test:
   <<: *default
   database: caotico_test
-  username: rails
+  username: caotico
   password: rails
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -86,4 +86,3 @@ production:
   database: caotico_production
   username: caotico
   password: <%= ENV['CAOTICO_DATABASE_PASSWORD'] %>
-

@@ -10,6 +10,6 @@ class Admin::PostsTest < ActionDispatch::IntegrationTest
 
 		put_via_redirect admin_post_path(@post), post: { title: 'This is a test title', content: 'Hey this is some content' }
 		assert_equal post_path_with_slug(assigns(:post)), path
-		assert_select "a[href=#{post_path_with_slug(assigns(:post))}]", 'This is a test title'
+		assert_select "a[href='#{post_path_with_slug(assigns(:post))}']", 'This is a test title'
 	end
 end

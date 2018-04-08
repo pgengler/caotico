@@ -1,3 +1,5 @@
+require 'linguist'
+
 module ApplicationHelper
 
 	def page_title

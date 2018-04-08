@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-	include PostsHelper
-
 	def index
 		if params[:tag]
 			@posts = Post.tagged_with(params[:tag]).page(params[:page])

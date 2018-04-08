@@ -37,7 +37,7 @@ class PostsControllerTest < ActionController::TestCase
 	test "post titles should link to post page" do
 		get :index
 
-		assert_select "a[href=#{post_path_with_slug(@post)}]"
+		assert_select "a[href='#{post_path_with_slug(@post)}']"
 	end
 
 	test "list of tags are included when viewing a post with tags" do
