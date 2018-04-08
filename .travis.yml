@@ -9,4 +9,5 @@ before_script:
   - psql -c 'create database caotico_test;' -U postgres
   - cp config/database.travis.yml config/database.yml
 before_install:
-  sudo apt-get install libicu-dev
+  - sudo apt-get install libicu-dev
+  - gem update --system
