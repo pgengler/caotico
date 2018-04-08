@@ -4,7 +4,7 @@ class Admin::PostsTest < ActionDispatch::IntegrationTest
 	include PostsHelper
 
 	test "edit post" do
-		@post = FactoryGirl.create(:post)
+		@post = FactoryBot.create(:post)
 		get edit_admin_post_path(@post)
 		assert_response :success
 

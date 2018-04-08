@@ -6,7 +6,7 @@ class PostsControllerTest < ActionController::TestCase
 	setup do
 		# Create 15 sample posts to be able test multipage behavior
 		15.times do |i|
-			FactoryGirl.create :post, title: "Factory #{i}", tag_list: "common, tag#{i}"
+			FactoryBot.create :post, title: "Factory #{i}", tag_list: "common, tag#{i}"
 		end
 		@post = Post.first
 	end
@@ -50,7 +50,7 @@ class PostsControllerTest < ActionController::TestCase
 	end
 
 	test "no list of tags is included for posts with no tags" do
-		post = FactoryGirl.create :post
+		post = FactoryBot.create :post
 		get :show, params: { id: post.to_param }
 
 		assert_select 'ul.tags', 0

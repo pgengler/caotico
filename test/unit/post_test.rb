@@ -3,9 +3,9 @@ require 'test_helper'
 class PostTest < ActiveSupport::TestCase
 
 	setup do
-		FactoryGirl.create :post, created_at: 1.week.ago
-		@newest = FactoryGirl.create(:post, created_at: 1.day.ago)
-		FactoryGirl.create :post, created_at: 10.years.ago
+		FactoryBot.create :post, created_at: 1.week.ago
+		@newest = FactoryBot.create(:post, created_at: 1.day.ago)
+		FactoryBot.create :post, created_at: 10.years.ago
 	end
 
 	test "requires a title" do

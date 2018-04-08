@@ -4,7 +4,7 @@ class Admin::PostsControllerTest < ActionController::TestCase
 	include PostsHelper
 
 	setup do
-		@post = FactoryGirl.create(:post, title: "Factory Post")
+		@post = FactoryBot.create(:post, title: "Factory Post")
 	end
 
 	test "has an 'index' action" do
