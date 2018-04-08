@@ -1,4 +1,4 @@
-class PreprocessMarkdown < ActiveRecord::Migration
+class PreprocessMarkdown < ActiveRecord::Migration[4.2]
 	include ApplicationHelper
 
   def up

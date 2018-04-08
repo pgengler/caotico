@@ -18,7 +18,7 @@ class PostsControllerTest < ActionController::TestCase
 	end
 
 	test "should show post" do
-		get :show, id: @post.to_param
+		get :show, params: { id: @post.to_param }
 		assert_response :success
 	end
 
@@ -29,7 +29,7 @@ class PostsControllerTest < ActionController::TestCase
 	end
 
 	test "should show date created for posts" do
-		get :show, id: @post.to_param
+		get :show, params: { id: @post.to_param }
 
 		assert_select 'time'
 	end
@@ -41,7 +41,7 @@ class PostsControllerTest < ActionController::TestCase
 	end
 
 	test "list of tags are included when viewing a post with tags" do
-		get :show, id: @post.to_param
+		get :show, params: { id: @post.to_param }
 
 		assert_select 'ul.tags' do
 			assert_select 'li a', 'common'
@@ -51,13 +51,13 @@ class PostsControllerTest < ActionController::TestCase
 
 	test "no list of tags is included for posts with no tags" do
 		post = FactoryGirl.create :post
-		get :show, id: post.to_param
+		get :show, params: { id: post.to_param }
 
 		assert_select 'ul.tags', 0
 	end
 
 	test "specifying a tag shows only posts matching that tag" do
-		get :index, tag: 'tag1'
+		get :index, params: { tag: 'tag1' }
 
 		assert_select 'section.post', 1
 	end

@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 5.0.0'
 
-gem 'pg', '~> 0.15'
+gem 'pg'
 
 group :assets do
 	gem 'sass-rails'
@@ -32,4 +32,8 @@ group :development do
 	gem 'capistrano-rvm'
 	gem 'capistrano-bundler'
 	gem 'capistrano3-puma'
+end
+
+group :test do
+	gem 'rails-controller-testing'
 end
