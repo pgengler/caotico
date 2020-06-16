@@ -131,8 +131,8 @@ GEM
     nio4r (2.3.0)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    nokogumbo (1.5.0)
-      nokogiri
+    nokogumbo (2.0.2)
+      nokogiri (~> 1.8, >= 1.8.4)
     pg (1.0.0)
     puma (3.12.6)
     pygments.rb (1.2.1)
@@ -176,10 +176,10 @@ GEM
       i18n
     ruby_dep (1.5.0)
     rugged (0.27.0)
-    sanitize (4.6.4)
+    sanitize (5.2.1)
       crass (~> 1.0.2)
-      nokogiri (>= 1.4.4)
-      nokogumbo (~> 1.4)
+      nokogiri (>= 1.8.0)
+      nokogumbo (~> 2.0)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -240,7 +240,7 @@ DEPENDENCIES
   rails (~> 5.1.0)
   rails-controller-testing
   rouge (~> 3.1)
-  sanitize (~> 4.6.3)
+  sanitize (~> 5.2.1)
   sass-rails
   spring
   spring-watcher-listen (~> 2.0.0)
