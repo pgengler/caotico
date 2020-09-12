@@ -1,5 +1,5 @@
 # config valid only for Capistrano 3.1
-lock '3.2.1'
+lock '3.10.1'
 
 set :application, 'caotico'
 set :repo_url, 'git://github.com/pgengler/caotico.git'
