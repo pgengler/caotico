@@ -4,8 +4,9 @@ gem 'rails', '~> 5.1.0'
 
 gem 'pg'
 
+gem 'sass-rails'
+
 group :assets do
-	gem 'sass-rails'
 	gem 'uglifier'
 end
 
