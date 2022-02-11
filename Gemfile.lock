@@ -131,7 +131,7 @@ GEM
     nokogumbo (2.0.4)
       nokogiri (~> 1.8, >= 1.8.4)
     pg (1.2.3)
-    puma (4.3.9)
+    puma (4.3.11)
       nio4r (~> 2.0)
     pygments.rb (1.2.1)
       multi_json (>= 1.0.0)
