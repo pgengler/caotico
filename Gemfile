@@ -19,7 +19,7 @@ gem 'rouge', '~> 3.1'
 gem 'sanitize', '~> 5.2.1'
 gem 'github-linguist', '~> 6.0'
 gem 'pygments.rb'
-gem 'commonmarker', '~> 0.14'
+gem 'commonmarker', '~> 0.23'
 
 gem 'acts-as-taggable-on'
 
