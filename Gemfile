@@ -16,7 +16,7 @@ gem 'kaminari'
 
 gem 'html-pipeline', '~> 2.7.1'
 gem 'rouge', '~> 3.1'
-gem 'sanitize', '~> 5.2.1'
+gem 'sanitize', '~> 6.0.2'
 gem 'github-linguist', '~> 6.0'
 gem 'pygments.rb'
 gem 'commonmarker', '~> 0.23'
