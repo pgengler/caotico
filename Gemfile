@@ -24,7 +24,7 @@ gem 'commonmarker', '~> 0.23'
 gem 'acts-as-taggable-on'
 
 gem 'dotenv-rails'
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 5.6'
 
 group :development, :test do
 	gem 'factory_bot_rails', '~> 4.0'
