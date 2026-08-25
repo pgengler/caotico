@@ -1,6 +1,4 @@
-class Post < ActiveRecord::Base
-
-	include ApplicationHelper
+class Post < ApplicationRecord
 
 	acts_as_ordered_taggable
 
@@ -15,7 +13,7 @@ class Post < ActiveRecord::Base
 	private
 
 	def render_markdown
-		self.rendered_content = markdown(self.content)
+		self.rendered_content = MarkdownRenderer.render(self.content)
 	end
 
 end

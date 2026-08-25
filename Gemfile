@@ -1,45 +1,56 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'rails', '~> 5.1.0'
+# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem "rails", "~> 8.1.3", ">= 8.1.3.1"
+# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
+gem "propshaft"
+# Use postgresql as the database for Active Record
+gem "pg", "~> 1.1"
+# Use the Puma web server [https://github.com/puma/puma]
+gem "puma", ">= 5.0"
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem "importmap-rails"
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem "turbo-rails"
+# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem "stimulus-rails"
+# Use Dart SASS [https://github.com/rails/dartsass-rails]
+gem "dartsass-rails"
 
-gem 'pg'
+# Application dependencies
+gem "kaminari"
+gem "acts-as-taggable-on"
+gem "html-pipeline"
+gem "rouge"
+gem "sanitize"
+gem "commonmarker"
+gem "dotenv-rails"
 
-gem 'sass-rails'
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-group :assets do
-	gem 'uglifier'
-end
+# Reduces boot times through caching; required in config/boot.rb
+gem "bootsnap", require: false
 
-gem 'jquery-rails'
+# Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
+gem "kamal", require: false
 
-gem 'kaminari'
-
-gem 'html-pipeline', '~> 2.7.1'
-gem 'rouge', '~> 3.1'
-gem 'sanitize', '~> 5.2.1'
-gem 'github-linguist', '~> 6.0'
-gem 'pygments.rb'
-gem 'commonmarker', '~> 0.23'
-
-gem 'acts-as-taggable-on'
-
-gem 'dotenv-rails'
-gem 'puma', '~> 4.3'
+# Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
+gem "thruster", require: false
 
 group :development, :test do
-	gem 'factory_bot_rails', '~> 4.0'
-	gem 'spring'
-	gem 'spring-watcher-listen', '~> 2.0.0'
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "factory_bot_rails"
 end
 
 group :development do
-	gem 'capistrano', '~> 3.0'
-	gem 'capistrano-rails'
-	gem 'capistrano-rvm'
-	gem 'capistrano-bundler'
-	gem 'capistrano3-puma'
+  # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "web-console"
 end
 
 group :test do
-	gem 'rails-controller-testing'
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "capybara"
+  gem "selenium-webdriver"
 end
