@@ -168,13 +168,37 @@ kamal app logs
 
 ## Deploying new versions
 
-For routine deploys after the initial setup:
+There are two ways to deploy: via GitHub Actions (recommended) or manually from your local machine.
+
+### Via GitHub Actions
+
+A manually-triggered GitHub Actions workflow is defined in `.github/workflows/deploy.yml`. To use it, you first need to configure the following repository secrets under **Settings → Secrets and variables → Actions**:
+
+| Secret                      | Description                                                            |
+| --------------------------- | ---------------------------------------------------------------------- |
+| `SSH_PRIVATE_KEY`           | SSH private key for the `pgengler-net` user on `hyperion.pgengler.net` |
+| `KAMAL_REGISTRY_PASSWORD`   | GitHub PAT with `write:packages` scope (for pushing to `ghcr.io`)      |
+| `RAILS_MASTER_KEY`          | Contents of `config/master.key`                                        |
+| `CAOTICO_DATABASE_PASSWORD` | PostgreSQL password for the `caotico` role                             |
+
+Once the secrets are configured, trigger a deploy by going to **Actions → Deploy → Run workflow** in the GitHub UI. The workflow will:
+
+1. Check out the code and set up Ruby 4.0.6.
+2. Configure SSH access to the server using the `SSH_PRIVATE_KEY` secret.
+3. Write the Kamal secrets file from the remaining secrets.
+4. Run `kamal deploy`, which builds the Docker image, pushes it to `ghcr.io`, and rolls it out on the server with zero downtime.
+
+### From your local machine
+
+Make sure `.kamal/secrets` is populated (see [Configure secrets](#configure-secrets)), then run:
 
 ```bash
 kamal deploy
 ```
 
-This builds a new image, pushes it, and performs a zero-downtime rollout on the server. Kamal Proxy keeps the old container running while the new one boots and passes health checks, then switches traffic over. The entrypoint script (`bin/docker-entrypoint`) automatically runs `db:prepare` on boot, so database migrations are applied as part of every deploy — no manual migration step is needed.
+### How deploys work
+
+Either method builds a new image, pushes it, and performs a zero-downtime rollout on the server. Kamal Proxy keeps the old container running while the new one boots and passes health checks, then switches traffic over. The entrypoint script (`bin/docker-entrypoint`) automatically runs `db:prepare` on boot, so database migrations are applied as part of every deploy — no manual migration step is needed.
 
 ### Rolling back
 
@@ -200,7 +224,7 @@ kamal app rollback
 
 - **Automatic migrations:** `bin/docker-entrypoint` runs `rails db:prepare` on every container boot. This creates the database if it doesn't exist and runs any pending migrations. There is no need to run migrations manually.
 
-- **Rotating the registry PAT:** Generate a new GitHub PAT, update `KAMAL_REGISTRY_PASSWORD` in `.kamal/secrets`, and run `kamal deploy`. The new token is used for the next image push.
+- **Rotating the registry PAT:** Generate a new GitHub PAT, update `KAMAL_REGISTRY_PASSWORD` in `.kamal/secrets` (for local deploys) or in the GitHub repository secrets (for Actions deploys), and run `kamal deploy`. The new token is used for the next image push.
 
 - **Rotating the master key:** If you regenerate `config/master.key` (and re-encrypt credentials), update `RAILS_MASTER_KEY` in `.kamal/secrets` and redeploy. Be aware that existing encrypted data (e.g., in the database) encrypted with the old key will no longer be decryptable.
 
