@@ -1,6 +1,16 @@
 # Deploying caotico
 
-caotico is deployed as a Docker container using [Kamal 2](https://kamal-deploy.org). The image is pushed to `ghcr.io/pgengler/caotico` and deployed to the server `hyperion.pgengler.net`, where Kamal's reverse proxy handles SSL via Let's Encrypt for `pgengler.net`.
+caotico is deployed as a Docker container using [Kamal 2](https://kamal-deploy.org). The image is pushed to `ghcr.io/pgengler/caotico` and deployed to `hyperion.pgengler.net`, a multi-app server that already runs nginx for HTTP/HTTPS routing and SSL termination. Kamal Proxy runs behind nginx on a custom HTTP port (8080) and handles zero-downtime cutover between container versions.
+
+## Architecture
+
+```
+Internet → nginx (SSL termination, Let's Encrypt) → Kamal Proxy (:8080) → app container (Thruster :80)
+```
+
+- **nginx** is the front-end reverse proxy. It terminates SSL using an existing Let's Encrypt certificate and routes requests for `pgengler.net` to Kamal Proxy on port 8080.
+- **Kamal Proxy** runs on the server as a Docker container managed by Kamal. It receives HTTP traffic from nginx, performs health checks on new containers, and handles the zero-downtime switch between old and new versions during deploys.
+- **The app container** runs the Rails app via Thruster on port 80 inside the container. Kamal Proxy routes traffic to it.
 
 ## Local prerequisites
 
@@ -14,7 +24,7 @@ Before you can deploy, your local machine needs the following:
 
 ## First-time remote server setup
 
-These steps are performed once on the remote server (`hyperion.pgengler.net`).
+These steps are performed once on the remote server (`hyperion.pgengler.net`). Since the server already runs nginx and hosts other apps, some infrastructure is already in place.
 
 ### 1. SSH access
 
@@ -28,7 +38,7 @@ Add your public key to `~/.ssh/authorized_keys` for that user if it isn't alread
 
 ### 2. Install Docker
 
-Kamal requires Docker Engine on the remote server. If the `pgengler-net` user has sudo access, `kamal setup` can install Docker automatically. Otherwise, install it manually:
+Kamal requires Docker Engine on the remote server. The server may not have Docker yet if the old app ran as a bare Puma process. If the `pgengler-net` user has sudo access, `kamal setup` can install Docker automatically. Otherwise, install it manually:
 
 ```bash
 # On the server, as a user with sudo:
@@ -42,22 +52,19 @@ Log out and back in for the group change to take effect, then verify:
 docker ps
 ```
 
-### 3. Install and configure PostgreSQL
+### 3. Configure PostgreSQL
 
-PostgreSQL runs on the host server (not as a Kamal accessory). Install it and create the database and role:
+PostgreSQL is already running on the host (the old app used it). You need to create a database and role for caotico:
 
 ```bash
-# Install PostgreSQL (Debian/Ubuntu)
-sudo apt-get update
-sudo apt-get install -y postgresql postgresql-contrib
-
-# Create the database role and set a password
 sudo -u postgres createuser caotico
 sudo -u postgres psql -c "ALTER USER caotico WITH PASSWORD '<your-strong-password>';"
 sudo -u postgres createdb -O caotico caotico_production
 ```
 
 Make note of the password — you'll need it for `CAOTICO_DATABASE_PASSWORD`.
+
+If you're migrating data from the old app, this is the time to import it into `caotico_production`.
 
 ### 4. Allow the app container to reach PostgreSQL
 
@@ -69,16 +76,40 @@ DATABASE_URL=postgres://caotico:<password>@172.17.0.1:5432/caotico_production
 
 Alternatively, ensure `pg_hba.conf` allows connections from the Docker network range and that PostgreSQL listens on the Docker bridge interface (not just `localhost`). You may need to set `listen_addresses = '*'` in `postgresql.conf` and add an appropriate `host` line in `pg_hba.conf`.
 
-### 5. Firewall
+### 5. Configure nginx
 
-Allow HTTP and HTTPS traffic:
+Add or update the nginx server block for `pgengler.net` to proxy to Kamal Proxy on port 8080. The existing SSL certificate configuration stays as-is — only the `proxy_pass` target changes:
 
-```bash
-sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp
+```nginx
+server {
+    listen 443 ssl;
+    server_name pgengler.net;
+
+    # Existing SSL certificate config (Let's Encrypt)
+    ssl_certificate /etc/letsencrypt/live/pgengler.net/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/pgengler.net/privkey.pem;
+
+    location / {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
 ```
 
-Kamal's reverse proxy (running on the server) handles SSL certificate provisioning via Let's Encrypt and routes traffic to the app container on port 80.
+Test and reload nginx:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+> **Note:** If port 8080 is already in use by another service on the server, choose a different port and update both the nginx `proxy_pass` and `proxy.run.http_port` in `config/deploy.yml`.
+
+### 6. Firewall
+
+No firewall changes are needed — ports 80 and 443 are already open for nginx. Kamal Proxy listens on port 8080, which only needs to be reachable from nginx (i.e., localhost), so it does not need to be exposed externally.
 
 ## Configure secrets
 
@@ -91,36 +122,38 @@ RAILS_MASTER_KEY=$(cat config/master.key)
 CAOTICO_DATABASE_PASSWORD=<your-postgres-password>
 ```
 
-> **Note:** `CAOTICO_DATABASE_PASSWORD` is referenced by `config/database.yml` but is **not currently listed** in `config/deploy.yml` under `env.secret`. You must add it before deploying. In `config/deploy.yml`, update the `env.secret` section:
->
-> ```yaml
-> env:
->   secret:
->     - RAILS_MASTER_KEY
->     - CAOTICO_DATABASE_PASSWORD
-> ```
->
-> If you're using `DATABASE_URL` instead (see step 4 above), add `DATABASE_URL` to `env.secret` and provide it in `.kamal/secrets` instead of (or in addition to) `CAOTICO_DATABASE_PASSWORD`.
+If you're using `DATABASE_URL` instead of `CAOTICO_DATABASE_PASSWORD` (see step 4 above), add `DATABASE_URL` to `env.secret` in `config/deploy.yml` and provide it in `.kamal/secrets`.
 
 ## First deploy
 
-Once the server is set up and secrets are configured, run the initial setup from your local machine:
+Once the server is set up, nginx is configured, and secrets are in place, run the initial setup from your local machine:
 
 ```bash
 kamal setup
 ```
 
 This will:
+
 1. Build the Docker image locally (for `amd64` architecture).
 2. Push the image to `ghcr.io/pgengler/caotico`.
 3. Pull the image onto the server and boot the container.
 4. Run `db:prepare` (via `bin/docker-entrypoint`) to create/migrate the database.
-5. Provision the Let's Encrypt SSL certificate for `pgengler.net`.
-6. Start the reverse proxy and route traffic to the container.
+5. Start Kamal Proxy on port 8080 and register the app container with it.
+
+Kamal will **not** provision an SSL certificate — that's already handled by nginx and Let's Encrypt.
+
+### Migrating from the old app
+
+If the old Perl/Puma app is still running, you can deploy caotico alongside it before cutting over:
+
+1. Deploy caotico with `kamal setup` (it runs on port 8080 behind Kamal Proxy).
+2. Verify the app works by hitting port 8080 directly: `curl -H "Host: pgengler.net" http://127.0.0.1:8080/up` (from the server).
+3. Once satisfied, update the nginx `proxy_pass` to point to `127.0.0.1:8080` and reload nginx.
+4. Shut down the old Puma process.
 
 ### Verify the deploy
 
-Check that the app is responding:
+Check that the app is responding through nginx:
 
 ```bash
 curl -I https://pgengler.net/up
@@ -141,7 +174,7 @@ For routine deploys after the initial setup:
 kamal deploy
 ```
 
-This builds a new image, pushes it, and performs a zero-downtime rollout on the server. The entrypoint script (`bin/docker-entrypoint`) automatically runs `db:prepare` on boot, so database migrations are applied as part of every deploy — no manual migration step is needed.
+This builds a new image, pushes it, and performs a zero-downtime rollout on the server. Kamal Proxy keeps the old container running while the new one boots and passes health checks, then switches traffic over. The entrypoint script (`bin/docker-entrypoint`) automatically runs `db:prepare` on boot, so database migrations are applied as part of every deploy — no manual migration step is needed.
 
 ### Rolling back
 
@@ -153,13 +186,13 @@ kamal app rollback
 
 ### Useful commands
 
-| Command | Description |
-|---|---|
-| `kamal app logs` | Tail the Rails app logs |
-| `kamal app exec <cmd>` | Run a command inside the app container |
-| `kamal app exec bash` | Get an interactive shell in the container |
-| `kamal proxy reboot` | Restart the reverse proxy |
-| `kamal audit` | Show deploy history |
+| Command                | Description                               |
+| ---------------------- | ----------------------------------------- |
+| `kamal app logs`       | Tail the Rails app logs                   |
+| `kamal app exec <cmd>` | Run a command inside the app container    |
+| `kamal app exec bash`  | Get an interactive shell in the container |
+| `kamal proxy reboot`   | Restart Kamal Proxy                       |
+| `kamal audit`          | Show deploy history                       |
 
 ## Notes and troubleshooting
 
@@ -172,3 +205,5 @@ kamal app rollback
 - **Rotating the master key:** If you regenerate `config/master.key` (and re-encrypt credentials), update `RAILS_MASTER_KEY` in `.kamal/secrets` and redeploy. Be aware that existing encrypted data (e.g., in the database) encrypted with the old key will no longer be decryptable.
 
 - **Non-root container:** The Dockerfile runs the app as a non-root `rails` user (UID 1000). The app serves on port 80 via [Thruster](https://github.com/basecamp/thruster/), which handles X-Sendfile and HTTP/2.
+
+- **Multiple apps on the same server:** Kamal Proxy supports host-based routing for multiple apps. Each app needs its own `config/deploy.yml` with a unique `proxy.host` and `proxy.run.http_port`. nginx routes each domain to the corresponding Kamal Proxy port.
