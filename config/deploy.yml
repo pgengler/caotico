@@ -9,14 +9,14 @@ servers:
   web:
     - hyperion.pgengler.net
 
-# Kamal Proxy listens on a custom HTTP port (8080) behind nginx, which terminates SSL and
+# Kamal Proxy listens on a custom HTTP port (8081) behind nginx, which terminates SSL and
 # routes traffic for pgengler.net to the proxy. The proxy handles zero-downtime cutover
 # between container versions. SSL is disabled here because nginx handles certificates.
 proxy:
   ssl: false
   host: pgengler.net
   run:
-    http_port: 8080
+    http_port: 8081
 
 # Credentials for your image host.
 registry:
