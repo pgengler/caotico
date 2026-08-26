@@ -10,6 +10,9 @@
 # Ignore all environment files.
 /.env*
 
+# Ignore direnv config (loads .env locally; not for git).
+/.envrc
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*

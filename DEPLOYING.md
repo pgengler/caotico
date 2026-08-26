@@ -19,6 +19,7 @@ Before you can deploy, your local machine needs the following:
 - **Ruby 4.0.6** — match the version in `.ruby-version`. Use `asdf`, `rbenv`, or your preferred version manager.
 - **Docker** — used by Kamal to build the production image. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) or Docker Engine for your platform.
 - **Kamal 2** — install via `gem install kamal`, or use the bundled version with `bundle exec kamal` (the `kamal` gem is in the `Gemfile`).
+- **direnv** — loads `.env` into your shell environment automatically when you enter the project directory. Kamal's `.kamal/secrets` references env vars (`$KAMAL_REGISTRY_PASSWORD`, `$CAOTICO_DATABASE_PASSWORD`) that must be present in the environment; direnv is how they get there for local deploys. Install via `brew install direnv`, then hook it into your shell by adding `eval "$(direnv hook bash)"` to `~/.bash_profile` (or the equivalent for zsh/fish — see `direnv hook --help`). Start a new shell afterward.
 - **GitHub Personal Access Token (PAT)** — create a classic PAT with `write:packages` scope at [github.com/settings/tokens](https://github.com/settings/tokens). This is used to authenticate to the `ghcr.io` container registry. You'll provide it as `KAMAL_REGISTRY_PASSWORD`.
 - **`config/master.key`** — the Rails master key for decrypting production credentials. This file is gitignored and must be present on your local machine. It will be injected into the container as `RAILS_MASTER_KEY`.
 
@@ -113,16 +114,30 @@ No firewall changes are needed — ports 80 and 443 are already open for nginx. 
 
 ## Configure secrets
 
-Secrets are defined in `.kamal/secrets` and referenced from `config/deploy.yml`. Edit `.kamal/secrets` to provide the actual values:
+Secrets are wired up across two files:
+
+- **`.kamal/secrets`** (committed, safe for git) — maps each secret to either an environment variable (`$VAR`) or a command substitution (`$(cat config/master.key)`). You should not edit this file with raw values; it is checked into git and would leak credentials.
+- **`.env`** (gitignored) — holds the actual secret values for local deploys. direnv loads this automatically (see [Local prerequisites](#local-prerequisites)).
+
+Create `.env` in the project root with your real values:
 
 ```bash
-# .kamal/secrets
+# .env  (gitignored — never commit this)
 KAMAL_REGISTRY_PASSWORD=<your-github-pat>
-RAILS_MASTER_KEY=$(cat config/master.key)
 CAOTICO_DATABASE_PASSWORD=<your-postgres-password>
 ```
 
-If you're using `DATABASE_URL` instead of `CAOTICO_DATABASE_PASSWORD` (see step 4 above), add `DATABASE_URL` to `env.secret` in `config/deploy.yml` and provide it in `.kamal/secrets`.
+`RAILS_MASTER_KEY` does not go in `.env` — `.kamal/secrets` reads it directly from `config/master.key` via `$(cat config/master.key)`.
+
+Then authorize direnv to load it (one-time, and again whenever `.envrc` changes):
+
+```bash
+direnv allow
+```
+
+After that, entering the project directory auto-exports `KAMAL_REGISTRY_PASSWORD` and `CAOTICO_DATABASE_PASSWORD` into your shell, and `kamal deploy` picks them up via `.kamal/secrets`.
+
+If you're using `DATABASE_URL` instead of `CAOTICO_DATABASE_PASSWORD` (see step 4 above), add `DATABASE_URL` to `env.secret` in `config/deploy.yml`, add `DATABASE_URL=<your-url>` to `.env`, and reference it as `DATABASE_URL=$DATABASE_URL` in `.kamal/secrets`.
 
 ## First deploy
 
@@ -224,9 +239,9 @@ kamal app rollback
 
 - **Automatic migrations:** `bin/docker-entrypoint` runs `rails db:prepare` on every container boot. This creates the database if it doesn't exist and runs any pending migrations. There is no need to run migrations manually.
 
-- **Rotating the registry PAT:** Generate a new GitHub PAT, update `KAMAL_REGISTRY_PASSWORD` in `.kamal/secrets` (for local deploys) or in the GitHub repository secrets (for Actions deploys), and run `kamal deploy`. The new token is used for the next image push.
+- **Rotating the registry PAT:** Generate a new GitHub PAT, update `KAMAL_REGISTRY_PASSWORD` in `.env` (for local deploys — direnv reloads automatically) or in the GitHub repository secrets (for Actions deploys), and run `kamal deploy`. The new token is used for the next image push.
 
-- **Rotating the master key:** If you regenerate `config/master.key` (and re-encrypt credentials), update `RAILS_MASTER_KEY` in `.kamal/secrets` and redeploy. Be aware that existing encrypted data (e.g., in the database) encrypted with the old key will no longer be decryptable.
+- **Rotating the master key:** If you regenerate `config/master.key` (and re-encrypt credentials), no `.env`/`.kamal/secrets` change is needed — `.kamal/secrets` reads the key file directly via `$(cat config/master.key)`. Just redeploy. Be aware that existing encrypted data (e.g., in the database) encrypted with the old key will no longer be decryptable.
 
 - **Non-root container:** The Dockerfile runs the app as a non-root `rails` user (UID 1000). The app serves on port 80 via [Thruster](https://github.com/basecamp/thruster/), which handles X-Sendfile and HTTP/2.
 
