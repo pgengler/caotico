@@ -17,6 +17,7 @@ proxy:
   host: pgengler.net
   run:
     http_port: 8081
+    https_port: 8444
 
 # Credentials for your image host.
 registry:
