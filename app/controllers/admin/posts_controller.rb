@@ -18,7 +18,7 @@ class Admin::PostsController < ApplicationController
 		if @post.save
 			redirect_to post_path_with_slug(@post), notice: 'Post was successfully created.'
 		else
-			render action: "new"
+			render :new, status: :unprocessable_entity
 		end
 	end
 
@@ -27,17 +27,17 @@ class Admin::PostsController < ApplicationController
 	end
 
 	def update
-		if @post.update_attributes(post_params)
+		if @post.update(post_params)
 			redirect_to post_path_with_slug(@post), notice: 'Post was successfully updated.'
 		else
-			render action: "edit"
+			render :edit, status: :unprocessable_entity
 		end
 	end
 
 	def destroy
 		@post.destroy
 
-		redirect_to posts_url
+		redirect_to posts_url, status: :see_other
 	end
 
 	private

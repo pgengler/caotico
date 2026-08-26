@@ -1,10 +1,9 @@
 class PreprocessMarkdown < ActiveRecord::Migration[4.2]
-	include ApplicationHelper
 
   def up
 		add_column :posts, :rendered_content, :text
 		Post.all.each do |post|
-			post.rendered_content = markdown(post.content)
+			post.rendered_content = MarkdownRenderer.render(post.content)
 			post.save!
 		end
   end
