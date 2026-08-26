@@ -19,7 +19,6 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-
 development:
   <<: *default
   database: caotico_development
@@ -83,3 +82,4 @@ production:
   database: caotico_production
   username: caotico
   password: <%= ENV["CAOTICO_DATABASE_PASSWORD"] %>
+  host: 172.17.0.1
