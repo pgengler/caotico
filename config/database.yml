@@ -83,3 +83,4 @@ production:
   username: caotico
   password: <%= ENV["CAOTICO_DATABASE_PASSWORD"] %>
   host: 172.17.0.1
+  port: 5435
