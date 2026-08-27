@@ -29,22 +29,22 @@ These steps are performed once on the remote server (`hyperion.pgengler.net`). S
 
 ### 1. SSH access
 
-Ensure you can SSH into the server as the `pgengler-net` user (the SSH user configured in `config/deploy.yml`):
+Ensure you can SSH into the server as the `apps` user (the SSH user configured in `config/deploy.yml`):
 
 ```bash
-ssh pgengler-net@hyperion.pgengler.net
+ssh apps@hyperion.pgengler.net
 ```
 
 Add your public key to `~/.ssh/authorized_keys` for that user if it isn't already.
 
 ### 2. Install Docker
 
-Kamal requires Docker Engine on the remote server. The server may not have Docker yet if the old app ran as a bare Puma process. If the `pgengler-net` user has sudo access, `kamal setup` can install Docker automatically. Otherwise, install it manually:
+Kamal requires Docker Engine on the remote server. The server may not have Docker yet if the old app ran as a bare Puma process. If the `apps` user has sudo access, `kamal setup` can install Docker automatically. Otherwise, install it manually:
 
 ```bash
 # On the server, as a user with sudo:
 curl -fsSL https://get.docker.com | sh
-sudo usermod -aG docker pgengler-net
+sudo usermod -aG docker apps
 ```
 
 Log out and back in for the group change to take effect, then verify:
@@ -189,12 +189,12 @@ There are two ways to deploy: via GitHub Actions (recommended) or manually from 
 
 A manually-triggered GitHub Actions workflow is defined in `.github/workflows/deploy.yml`. To use it, you first need to configure the following repository secrets under **Settings → Secrets and variables → Actions**:
 
-| Secret                      | Description                                                            |
-| --------------------------- | ---------------------------------------------------------------------- |
-| `SSH_PRIVATE_KEY`           | SSH private key for the `pgengler-net` user on `hyperion.pgengler.net` |
-| `KAMAL_REGISTRY_PASSWORD`   | GitHub PAT with `write:packages` scope (for pushing to `ghcr.io`)      |
-| `RAILS_MASTER_KEY`          | Contents of `config/master.key`                                        |
-| `CAOTICO_DATABASE_PASSWORD` | PostgreSQL password for the `caotico` role                             |
+| Secret                      | Description                                                       |
+| --------------------------- | ----------------------------------------------------------------- |
+| `SSH_PRIVATE_KEY`           | SSH private key for the `apps` user on `hyperion.pgengler.net`    |
+| `KAMAL_REGISTRY_PASSWORD`   | GitHub PAT with `write:packages` scope (for pushing to `ghcr.io`) |
+| `RAILS_MASTER_KEY`          | Contents of `config/master.key`                                   |
+| `CAOTICO_DATABASE_PASSWORD` | PostgreSQL password for the `caotico` role                        |
 
 Once the secrets are configured, trigger a deploy by going to **Actions → Deploy → Run workflow** in the GitHub UI. The workflow will:
 

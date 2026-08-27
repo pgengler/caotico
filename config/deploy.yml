@@ -40,7 +40,7 @@ env:
 
 # Use a different ssh user than root
 ssh:
-  user: pgengler-net
+  user: apps
 
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid
 # hitting 404 on in-flight requests. Combines all files from new and old
